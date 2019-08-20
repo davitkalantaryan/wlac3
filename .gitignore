@@ -1,1 +1,13 @@
+*.[oa]
+*~
+*.obj
+*.pro.user*
 sys
+prj/*/*_vs/.vs
+prj/*/*_vs/*/*/*.tlog
+prj/*/*_vs/ARM
+prj/*/*_vs/x64
+prj/*/*_vs/Win32
+prj/*/*_vs/Debug
+prj/*/*_vs/Release
+prj/libs/*_vs/*.vcxproj.user

@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="doc">
+      <UniqueIdentifier>{c8377556-4402-4afd-bddc-29fd3fbf5ceb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\include">
+      <UniqueIdentifier>{73ec9043-2252-4989-b09a-d02ee2a240ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\include\rpc">
+      <UniqueIdentifier>{bce9d505-273b-42ad-9dbc-da749f5a8b4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\private_include">
+      <UniqueIdentifier>{b839b5c4-5e4e-46b8-9986-9d908119b49d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\sunrpc\AUTH_NON.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\AUTH_UNI.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\AUTHUNIX.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\BCOPY.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\BINDRESV.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\CLNT_GEN.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\CLNT_PER.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\CLNT_RAW.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\CLNT_SIM.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\CLNT_TCP.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\CLNT_UDP.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\GET_MYAD.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\GETRPCEN.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\GETRPCPO.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\NT.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\PMAP_CLN.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\PMAP_GET.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\PMAP_GMA.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\PMAP_PR.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\PMAP_PRO.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\PMAP_RMT.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\PORTMAP.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\RPC_CALL.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\RPC_COMM.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\RPC_PROT.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\SUNRPC.CPP">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\SVC.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\SVC_AUTH.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\SVC_AUTU.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\SVC_RAW.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\SVC_RUN.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\SVC_SIMP.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\SVC_TCP.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\SVC_UDP.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\XDR.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\XDR_ARRA.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\XDR_FLOA.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\XDR_MEM.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\XDR_REC.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\XDR_REFE.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\sunrpc\XDR_STDI.C">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\include\rpc\auth.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\auth_uni.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\bcopy.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\clnt.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\netdb.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\pmap_rmt.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\rpc.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\rpc_msg.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\svc.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\svc_auth.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\types.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\xdr.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\wlac2_sunrpc_internal.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\sunrpc\private_include\sunrpc_private_used_during_lib_creation.h">
+      <Filter>Source Files\private_include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\sunrpc\private_include\sunrpc.h">
+      <Filter>Source Files\private_include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\sunrpc\private_include\sunrpc_private_used_during_lib_creation_with_symbols.h">
+      <Filter>Source Files\private_include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\pmap_clnt.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\rpc\pmap_prot.h">
+      <Filter>Header Files\include\rpc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\..\src\sunrpc\ReadMe.txt">
+      <Filter>doc</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\src\sunrpc\mini_xdr_rpc.def">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
