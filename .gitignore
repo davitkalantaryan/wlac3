@@ -11,3 +11,11 @@ prj/*/*_vs/Win32
 prj/*/*_vs/Debug
 prj/*/*_vs/Release
 prj/libs/*_vs/*.vcxproj.user
+
+/workspaces/*_vs/.vs
+/workspaces/*_vs/ARM
+/workspaces/*_vs/x64
+/workspaces/*_vs/Win32
+/workspaces/*_vs/Debug
+/workspaces/*_vs/Release
+/workspaces/*_vs/*.vcxproj.user
