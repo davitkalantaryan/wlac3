@@ -135,9 +135,6 @@
     <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\common_include_for_headers.h">
       <Filter>Header Files\include\.wlac_specific\first_includes</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\wlac2_cmmon_internal.h">
-      <Filter>Header Files\include\.wlac_specific\first_includes</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\include\.wlac_specific\redesigned\direct.h">
       <Filter>Header Files\include\.wlac_specific\redesigned</Filter>
     </ClInclude>
@@ -227,6 +224,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\include\poll.h">
       <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\wlac2_common_internal.h">
+      <Filter>Header Files\include\.wlac_specific\first_includes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

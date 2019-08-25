@@ -63,7 +63,7 @@ HIDDEN_SYMBOL2 size_t HashByPointer_GetIndexByKey(struct HashByPointer* a_hash, 
 static _inline size_t HashByPointer_GetIndexByKey(struct HashByPointer* a_hash, void* a_key)
 #endif
 {
-	size_t	unKey = REITERPRET_CAST2(size_t, a_key);
+	size_t	unKey = REINTERPRET_CAST2(size_t, a_key);
 	size_t	unIndexCore = unKey >> BITS_TO_SHIFT;
 	size_t	unIndexMasked = unKey & REMN_MASK;
 

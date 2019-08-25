@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../../../include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -113,6 +114,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../../../include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -122,6 +124,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../../../include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -133,6 +136,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../../../include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -148,6 +152,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../../../include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -163,6 +168,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../../../include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -174,7 +180,7 @@
     <ClInclude Include="..\..\..\include\.wlac_specific\.privatei\windows_and_socket_headers.h" />
     <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\common_definations_wul.h" />
     <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\common_include_for_headers.h" />
-    <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\wlac2_cmmon_internal.h" />
+    <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\wlac2_common_internal.h" />
     <ClInclude Include="..\..\..\include\.wlac_specific\redesigned\direct.h" />
     <ClInclude Include="..\..\..\include\.wlac_specific\redesigned\errno.h" />
     <ClInclude Include="..\..\..\include\.wlac_specific\redesigned\fcntl.h" />

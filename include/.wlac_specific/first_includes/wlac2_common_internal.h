@@ -1,5 +1,5 @@
 // 
-// file:			windows_sunrpc_internal.h
+// file:			wlac2_common_internal.h
 // created on:		2019 Aug 18 
 // created by:		Davit Kalantaryan (davit.kalantaryan@desy.de)
 // 
@@ -22,22 +22,61 @@
 
 #define REGISTER2			register
 
-#ifdef WLAC_DLL_CRAETION
-
-#define WLAC_EXPORT
-
-#elsif defined(USING_WLAC_SOURCES_OR_STATIC_LIB)
-
-#define WLAC_EXPORT
-
-#else
-
-#define WLAC_EXPORT
-
+#if		defined(_MSC_VER)
+#define EXPORT_SYM_FROM_LIB2		_declspec(dllexport)
+#define IMPORT_SYM_FROM_LIB2		_declspec(dllimport)
+#define HIDDEN_SYMBOL2	
+#if defined(__cplusplus) // check also version
+#define CPP11_OR_HIGHER2
+#endif
+#elif	defined(__GNUC__)
+#define EXPORT_SYM_FROM_LIB2		
+#define IMPORT_SYM_FROM_LIB2	
+#define HIDDEN_SYMBOL2				__attribute__((visibility(hidden)))	
+#if defined(__cplusplus) // check also version
+#define CPP11_OR_HIGHER2
+#endif
 #endif
 
+#ifdef __cplusplus
+#define STATIC_CAST2(_type,_value)		static_cast<_type>(_value)
+#define REINTERPRET_CAST2(_type,_value)	reinterpret_cast<_type>(_value)
+#define CONST_CAST2(_type,_value)		const_cast<_type>(_value)
+#define DYNAMIC_CAST2(_type,_value)		dynamic_cast<_type>(_value)
+#else
+#define STATIC_CAST2(_type,_value)		((_type)(_value))
+#define REINTERPRET_CAST2(_type,_value)	((_type)(_value))
+#define CONST_CAST2(_type,_value)		((_type)(_value))
+#define DYNAMIC_CAST2(_type,_value)		((_type)(_value))
+#endif
+
+// this should force to make compile time check when possible
+#define ARGNONULL2
+
+#ifdef WLAC_DLL_CRAETION
+#define WLAC_EXPORT		EXPORT_SYM_FROM_LIB2
+#elif defined(USING_WLAC_SOURCES_OR_STATIC_LIB)
+#define WLAC_EXPORT
+#else
+#define WLAC_EXPORT		IMPORT_SYM_FROM_LIB2
+#endif
+
+#ifdef CPP11_OR_HIGHER2
+#define NEWNULLPTR2	nullptr
+#else
+#define NEWNULLPTR2 NULL
+#endif
 
 #endif  // #ifndef DEFINE_WLAC_INTERNALS
+
+
+#ifndef HANDLE_MEM_DEF
+#define HANDLE_MEM_DEF(_memory,...)	do{if(!(_memory)){exit(1);}}while(0)
+#endif
+
+#define LIKELY2(_cond)		(_cond) 
+#define UNLIKELY2(_cond)	(_cond) 
+
 
 #ifndef WLAC_INCLUDE_REDIRECTIONS_DONE
 #define WLAC_INCLUDE_REDIRECTIONS_DONE
@@ -89,7 +128,6 @@
 
 #pragma include_alias( <WinSock2.h>, <.wlac_specific/redesigned/WinSock2.h> )
 #pragma include_alias( "WinSock2.h", ".wlac_specific/redesigned/WinSock2.h" )
-
 
 #pragma include_alias( <WS2tcpip.h>, <.wlac_specific/redesigned/WS2tcpip.h> )
 #pragma include_alias( "WS2tcpip.h", ".wlac_specific/redesigned/WS2tcpip.h" )

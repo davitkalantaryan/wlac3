@@ -8,7 +8,7 @@
 #define WLAC2_sys__ipc_h
 #ifndef WLAC_IGNORE_ALL_IN_HEADERS
 
-#include <.wlac_specific/first_includes/wlac2_cmmon_internal.h>
+#include <.wlac_specific/first_includes/wlac2_common_internal.h>
 
 /* Mode bits for `msgget', `semget', and `shmget'.  */
 #ifndef IPC_CREAT

@@ -1,5 +1,5 @@
 //
-// file:			ldap.h
+// file:			unistd.h
 // created on:		2019 Aug 18
 // created by:		Davit Kalantaryan (davit.kalantaryan@desy.de)
 //
@@ -8,7 +8,7 @@
 #define WLAC2__unistd_h
 #ifndef WLAC_IGNORE_ALL_IN_HEADERS
 
-#include <.wlac_specific/first_includes/wlac2_cmmon_internal.h>
+#include <.wlac_specific/first_includes/wlac2_common_internal.h>
 #include <.wlac_specific/redesigned/sys/types.h>
 
 #ifndef MAX_USER_NAME_LEN_MIN1

@@ -28,7 +28,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{D71B7002-49BA-443E-8E94-D09C3D24A6A5}</ProjectGuid>
+    <ProjectGuid>{C9B0EEA2-46F6-4C63-805C-FDE80D840F5D}</ProjectGuid>
     <RootNamespace>sunrpc</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>

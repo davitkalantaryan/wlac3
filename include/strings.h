@@ -8,7 +8,7 @@
 #define WLAC2__strings_h
 #ifndef WLAC_IGNORE_ALL_IN_HEADERS
 
-#include <.wlac_specific/first_includes/wlac2_cmmon_internal.h>
+#include <.wlac_specific/first_includes/wlac2_common_internal.h>
 #include <.wlac_specific/redesigned/sys/types.h>
 
 BEGIN_C_DECL2
