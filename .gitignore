@@ -2,7 +2,7 @@
 *~
 *.obj
 *.pro.user*
-sys
+/sys
 prj/*/*_vs/.vs
 prj/*/*_vs/*/*/*.tlog
 prj/*/*_vs/ARM
