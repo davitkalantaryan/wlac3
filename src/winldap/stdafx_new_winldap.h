@@ -10,21 +10,31 @@
 #define __new_winldap_stdafx_new_winldap_h__
 
 
-//#include "first_includes/common_definations_wul.h"
+//#include <.wlac_sp first_includes/common_definations_wul.h>
 
 
-//#ifdef __USING_NWLDAP_SOURCES__
-#if(_MSC_VER >= 1400)
+#ifndef NWLDAP_API
+
+//#ifdef CREATING_LDAP_LIB
+//#define NWLDAP_FAR_API		EXPORT_TO_LIB_API
+//#define NWLDAP_FAR_VAR		extern EXPORT_TO_LIB_VAR
+//#define NWLDAP_API			EXPORT_TO_LIB_API
+//#define NWLDAP_VAR			EXPORT_TO_LIB_VAR
+//#elif defined(__USING_NWLDAP_SOURCES__)
+//#if(_MSC_VER >= 1400)
 #define NWLDAP_FAR_API
 #define NWLDAP_FAR_VAR		extern 
 #define NWLDAP_API			
 #define NWLDAP_VAR			
-#else
-#define NWLDAP_FAR_API		EXPORT_TO_LIB_API
-#define NWLDAP_FAR_VAR		extern EXPORT_TO_LIB_VAR
-#define NWLDAP_API			EXPORT_TO_LIB_API
-#define NWLDAP_VAR			EXPORT_TO_LIB_VAR
-#endif  // #ifdef __USING_NWLDAP_SOURCES__
+//#else
+//#define NWLDAP_FAR_API		EXPORT_TO_LIB_API
+//#define NWLDAP_FAR_VAR		extern EXPORT_TO_LIB_VAR
+//#define NWLDAP_API			EXPORT_TO_LIB_API
+//#define NWLDAP_VAR			EXPORT_TO_LIB_VAR
+//#endif  // #ifdef __USING_NWLDAP_SOURCES__
+
+
+#endif
 
 
 #endif  /* #ifndef __new_winldap_stdafx_new_winldap_h__ */

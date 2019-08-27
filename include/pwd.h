@@ -24,7 +24,7 @@ struct passwd{
 };
 
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(getpwuid_needed)
-WLAC_EXPORT struct passwd *getpwuid(uid_t uid);
+USERGROUPID_EXPORT2 struct passwd *getpwuid(uid_t uid);
 #endif
 
 

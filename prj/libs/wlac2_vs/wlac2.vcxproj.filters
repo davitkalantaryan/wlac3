@@ -233,6 +233,12 @@
     <ClCompile Include="..\..\..\src\wlac2\wlac2_library_entry_point.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\src\wlac2\wlac_list_and_hashtables.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\wlac2\wlac2_unix_like_signaling.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\include\.wlac_specific\redesigned\fstream">

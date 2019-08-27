@@ -27,11 +27,15 @@ BEGIN_C_DECL2
 #include <Windows.h>
 #include <Winldap.h>
 
+#ifndef NWLDAP_API
+#define NWLDAP_API
+#endif
+
 #if !defined(IFNORE_ALL_WLAC_SYMBOLS) || defined(ldap_initialize_needed)
-WLAC_EXPORT int ldap_initialize(LDAP **ldp, char *uri);
+NWLDAP_API int ldap_initialize(LDAP **ldp, char *uri);
 #endif
 #if !defined(IFNORE_ALL_WLAC_SYMBOLS) || defined(ldap_unbind_ext_needed)
-WLAC_EXPORT int ldap_unbind_ext(LDAP *ld, LDAPControl *sctrls[], LDAPControl *cctrls[]);
+NWLDAP_API int ldap_unbind_ext(LDAP *ld, LDAPControl *sctrls[], LDAPControl *cctrls[]);
 #endif
 
 #ifdef CINTERFACE_here_defined

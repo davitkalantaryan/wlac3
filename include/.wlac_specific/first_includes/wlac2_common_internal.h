@@ -67,6 +67,8 @@
 #define NEWNULLPTR2 NULL
 #endif
 
+#define	USERGROUPID_EXPORT2
+
 #endif  // #ifndef DEFINE_WLAC_INTERNALS
 
 

@@ -11,6 +11,7 @@
 #include <WinSock2.h>
 #include <WS2tcpip.h>
 #include <Windows.h>
+#include <pwd.h>
 
 #ifndef LIKELY
 #define LIKELY(_x) (_x)
@@ -32,19 +33,19 @@ void InitUserGroupDetails(struct SUserDetails* a_usr)
 }
 
 
-uid_t getuid(void)
+USERGROUPID_EXPORT2 uid_t geteuid(void)
 {
 	struct SUserDetails aData;
-	char vcUserName[RESOURCE_BUF_LEN_MIN1+1];
-	DWORD	dwBufLen= RESOURCE_BUF_LEN_MIN1;
+	char vcUserName[RESOURCE_BUF_LEN_MIN1 + 1];
+	DWORD	dwBufLen = RESOURCE_BUF_LEN_MIN1;
 	int nReturn;
 
-	vcUserName[RESOURCE_BUF_LEN_MIN1]=0;
-	if( LIKELY(GetUserNameA(vcUserName,&dwBufLen))){
+	vcUserName[RESOURCE_BUF_LEN_MIN1] = 0;
+	if (LIKELY(GetUserNameA(vcUserName, &dwBufLen))) {
 		InitUserGroupDetails(&aData);
 		aData.un.userName = vcUserName;
-		nReturn = get_uid_gid_ggroup_witch_cashing(UGID_USERNAME,&aData);
-		if(nReturn){
+		nReturn = get_uid_gid_ggroup_witch_cashing(UGID_USERNAME, &aData);
+		if (nReturn) {
 			//errno = nReturn; // This function is always successfull // https://linux.die.net/man/2/getuid 
 			// should be returnd windows ssid (later)
 			return 0;
@@ -56,7 +57,13 @@ uid_t getuid(void)
 }
 
 
-gid_t getgid(void)
+USERGROUPID_EXPORT2 uid_t getuid(void)
+{
+	return geteuid();
+}
+
+
+USERGROUPID_EXPORT2 gid_t getegid(void)
 {
 	struct SUserDetails aData;
 	char vcUserName[RESOURCE_BUF_LEN_MIN1+1];
@@ -80,10 +87,34 @@ gid_t getgid(void)
 }
 
 
+USERGROUPID_EXPORT2 gid_t getgid(void)
+{
+	return getegid();
+}
+
+#define PW_AND_PASW_LEN		1023
+
+static char s_vsPw_name  [PW_AND_PASW_LEN+1] = { 0 };
+static char s_vsPw_passwd[PW_AND_PASW_LEN+1] = { 0 };
+static char s_vsPw_gecos [PW_AND_PASW_LEN+1] = { 0 };
+static char s_vsPw_dir   [PW_AND_PASW_LEN+1] = { 0 };
+static char s_vsPw_shell [PW_AND_PASW_LEN+1] = { 0 };
+
+static struct passwd	s_passwd = { s_vsPw_name,s_vsPw_passwd,0,0,s_vsPw_gecos,s_vsPw_dir,s_vsPw_shell };
+
+USERGROUPID_EXPORT2 struct passwd *getpwuid(uid_t a_uid)
+{
+	DWORD dwBufLen = PW_AND_PASW_LEN;
+	s_passwd.pw_uid = a_uid;
+	GetUserNameA(s_passwd.pw_name, &dwBufLen);
+	return &s_passwd;
+}
+
+
 //
 // https://linux.die.net/man/3/getgrouplist 
 //
-int getgrouplist(const char *a_user, gid_t a_group, gid_t *a_groups, int *a_ngroups)
+USERGROUPID_EXPORT2 int getgrouplist(const char *a_user, gid_t a_group, gid_t *a_groups, int *a_ngroups)
 {
 	struct SUserDetails aData;
 	int nReturn, i,nForLoop,nGroupIdIncluded;
@@ -118,7 +149,7 @@ int getgrouplist(const char *a_user, gid_t a_group, gid_t *a_groups, int *a_ngro
 //
 // https://linux.die.net/man/2/getgroups 
 //
-int getgroups(int a_size, gid_t a_list[])
+USERGROUPID_EXPORT2 int getgroups(int a_size, gid_t a_list[])
 {
 	struct SUserDetails aData;
 	char vcUserName[RESOURCE_BUF_LEN_MIN1+1];

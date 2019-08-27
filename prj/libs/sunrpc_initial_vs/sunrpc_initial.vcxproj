@@ -104,32 +104,32 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
+    <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
+    <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
+    <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
+    <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
+    <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
+    <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -162,7 +162,7 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
     <Link>
       <AdditionalDependencies>wsock32.lib;Advapi32.lib</AdditionalDependencies>
       <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
+      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
@@ -227,7 +227,7 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>wsock32.lib;Advapi32.lib</AdditionalDependencies>
       <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(TargetName).lib</ImportLibrary>
+      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll

@@ -40,7 +40,7 @@ struct SUserDetails {
 };
 
 #if defined(getuid_needed)
-uid_t getuid(void);
+USERGROUPID_EXPORT2 uid_t getuid(void);
 #endif
 
 //#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(getgid_needed)
@@ -49,15 +49,15 @@ gid_t getgid(void);
 #endif
 
 #if defined(geteuid_needed)
-uid_t geteuid(void);
+USERGROUPID_EXPORT2 uid_t geteuid(void);
 #endif
 
 #if defined(getegid_needed)
-gid_t getegid(void);
+USERGROUPID_EXPORT2 gid_t getegid(void);
 #endif
 
 #if defined(getgroups_needed)
-int getgroups(int gidsetsize, gid_t grouplist[]);
+USERGROUPID_EXPORT2 int getgroups(int gidsetsize, gid_t grouplist[]);
 #endif
 
 END_C_DECL2
