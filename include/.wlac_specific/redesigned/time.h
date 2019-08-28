@@ -52,13 +52,23 @@ struct timespec {
 #endif
 #define	localtime_r(_timep_,_result_)	(localtime(_timep_) ? ((struct tm*)memcpy((_result_),localtime(_timep_),sizeof(struct tm))) : NULL)
 
-__BEGIN_C_DECLS
+BEGIN_C_DECL2
 
-GEM_API_FAR int nanosleep(const struct timespec *a_req, struct timespec *a_rem);
-GEM_API_FAR char *strptime(const char *s, const char *format, struct tm *tm);
-GEM_API_FAR size_t wlac_strftime(char *strDest, size_t maxsize, const char *format, const struct tm *timeptr);
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(nanosleep_needed)
+WLAC_EXPORT int nanosleep(const struct timespec *a_req, struct timespec *a_rem);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(strptime_needed)
+WLAC_EXPORT char *strptime(const char *s, const char *format, struct tm *tm);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(wlac_strftime_needed) || defined(strftime_needed)
+WLAC_EXPORT size_t wlac_strftime(char *strDest, size_t maxsize, const char *format, const struct tm *timeptr);
+#endif
 
-__END_C_DECLS
+#if (!defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(strftime_needed)) && !defined(strftime_not_needed)
+#define strftime	wlac_strftime
+#endif
+
+END_C_DECL2
 
 
 #endif  /* #ifndef __win_time_new_h__ */

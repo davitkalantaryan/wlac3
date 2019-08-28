@@ -31,10 +31,10 @@ BEGIN_C_DECL2
 #define NWLDAP_API
 #endif
 
-#if !defined(IFNORE_ALL_WLAC_SYMBOLS) || defined(ldap_initialize_needed)
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(ldap_initialize_needed)
 NWLDAP_API int ldap_initialize(LDAP **ldp, char *uri);
 #endif
-#if !defined(IFNORE_ALL_WLAC_SYMBOLS) || defined(ldap_unbind_ext_needed)
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(ldap_unbind_ext_needed)
 NWLDAP_API int ldap_unbind_ext(LDAP *ld, LDAPControl *sctrls[], LDAPControl *cctrls[]);
 #endif
 

@@ -28,8 +28,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{D71B7002-49BA-443E-8E94-D09C3D24A6A5}</ProjectGuid>
-    <RootNamespace>sunrpc_initial</RootNamespace>
+    <ProjectGuid>{E128EA74-073A-4B2A-9B7F-11DA405A900D}</ProjectGuid>
+    <RootNamespace>librfc2trojantest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -79,58 +79,42 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\common\common_vs\wlac_dev_base.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\common\common_vs\wlac_dev_base.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\common\common_vs\wlac_dev_base.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\common\common_vs\wlac_dev_base.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\common\common_vs\wlac_dev_base.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\common\common_vs\wlac_dev_base.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
-    <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -138,13 +122,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../../include;../../../src/sunrpc/private_include</AdditionalIncludeDirectories>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>wsock32.lib;Advapi32.lib</AdditionalDependencies>
-      <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
-    </Link>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
 copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
@@ -157,13 +135,7 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../../include;../../../src/sunrpc/private_include</AdditionalIncludeDirectories>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>wsock32.lib;Advapi32.lib</AdditionalDependencies>
-      <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
-    </Link>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
 copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
@@ -176,13 +148,7 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../../include;../../../src/sunrpc/private_include</AdditionalIncludeDirectories>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>wsock32.lib;Advapi32.lib</AdditionalDependencies>
-      <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
-    </Link>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
 copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
@@ -197,14 +163,10 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../../include;../../../src/sunrpc/private_include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>wsock32.lib;Advapi32.lib</AdditionalDependencies>
-      <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
@@ -220,14 +182,10 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../../include;../../../src/sunrpc/private_include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>wsock32.lib;Advapi32.lib</AdditionalDependencies>
-      <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
@@ -243,14 +201,10 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>../../../include;../../../src/sunrpc/private_include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>wsock32.lib;Advapi32.lib</AdditionalDependencies>
-      <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
@@ -259,109 +213,7 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\sunrpc\AUTHUNIX.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\AUTH_NON.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\AUTH_UNI.C">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\BCOPY.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\BINDRESV.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\CLNT_GEN.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\CLNT_PER.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\CLNT_RAW.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\CLNT_SIM.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\CLNT_TCP.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\CLNT_UDP.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\GETRPCEN.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\GETRPCPO.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\GET_MYAD.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\NT.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\PMAP_CLN.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\PMAP_GET.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\PMAP_GMA.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\PMAP_PR.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\PMAP_PRO.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\PMAP_RMT.C">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\PORTMAP.C">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\RPC_CALL.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\RPC_COMM.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\RPC_PROT.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\StdAfx.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\SUNRPC.CPP" />
-    <ClCompile Include="..\..\..\src\sunrpc\SVC.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_AUTH.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_AUTU.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_RAW.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_RUN.C">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_SIMP.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_TCP.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_UDP.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\XDR.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\XDR_ARRA.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\XDR_FLOA.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\XDR_MEM.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\XDR_REC.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\XDR_REFE.C" />
-    <ClCompile Include="..\..\..\src\sunrpc\XDR_STDI.C" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\..\..\src\sunrpc\ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\include\rpc\auth.h" />
-    <ClInclude Include="..\..\..\include\rpc\auth_uni.h" />
-    <ClInclude Include="..\..\..\include\rpc\bcopy.h" />
-    <ClInclude Include="..\..\..\include\rpc\clnt.h" />
-    <ClInclude Include="..\..\..\include\rpc\netdb.h" />
-    <ClInclude Include="..\..\..\include\rpc\pmap_clnt.h" />
-    <ClInclude Include="..\..\..\include\rpc\pmap_prot.h" />
-    <ClInclude Include="..\..\..\include\rpc\pmap_rmt.h" />
-    <ClInclude Include="..\..\..\include\rpc\rpc.h" />
-    <ClInclude Include="..\..\..\include\rpc\rpc_msg.h" />
-    <ClInclude Include="..\..\..\include\rpc\svc.h" />
-    <ClInclude Include="..\..\..\include\rpc\svc_auth.h" />
-    <ClInclude Include="..\..\..\include\rpc\types.h" />
-    <ClInclude Include="..\..\..\include\rpc\wlac2_sunrpc_internal.h" />
-    <ClInclude Include="..\..\..\include\rpc\xdr.h" />
-    <ClInclude Include="..\..\..\src\sunrpc\private_include\sunrpc.h" />
-    <ClInclude Include="..\..\..\src\sunrpc\private_include\sunrpc_private_used_during_lib_creation.h" />
-    <ClInclude Include="..\..\..\src\sunrpc\private_include\sunrpc_private_used_during_lib_creation_with_symbols.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\src\sunrpc\mini_xdr_rpc.def" />
+    <ClCompile Include="..\..\..\src\tests\dllmain_librfc2_trojan_test.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

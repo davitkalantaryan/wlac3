@@ -14,11 +14,13 @@
 #pragma include_alias( <string.h>, <string.h> )
 #include <string.h>
 
-__BEGIN_C_DECLS
+BEGIN_C_DECL2
 
-GEM_API_FAR char* wlac_strerror(int errnum);
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(wlac_strerror_needed)
+WLAC_EXPORT char* wlac_strerror(int errnum);
+#endif
 
-__END_C_DECLS
+END_C_DECL2
 
 #define strerror wlac_strerror
 

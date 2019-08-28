@@ -8,14 +8,16 @@
 #include <.wlac_specific/redesigned/signal.h>
 #include <memory.h>
 
-
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigemptyset_needed)
 WLAC_EXPORT int sigemptyset(sigset_t *a_set)
 {
 	memset(a_set->__val, 0, sizeof(a_set->__val));
 	return 0;
 }
+#endif
 
 
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigaddset_needed)
 WLAC_EXPORT int sigaddset(sigset_t *a_set, int a_signo)
 {
 	if (a_set && (a_signo < _SIGSET_NWORDS)) {
@@ -23,3 +25,4 @@ WLAC_EXPORT int sigaddset(sigset_t *a_set, int a_signo)
 	}
 	return 0;
 }
+#endif
