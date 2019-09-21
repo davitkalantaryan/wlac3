@@ -13,15 +13,27 @@
 #ifndef __win_signal_new_h__
 #define __win_signal_new_h__
 
-#include <.wlac_specific/first_includes/common_include_for_headers.h>
+#include <.wlac_specific/first_includes/wlac2_common_internal.h>
 
 #pragma include_alias( <signal.h>, <signal.h> )
 #pragma include_alias( "signal.h", "signal.h" )
 #include <signal.h>
 
-#include <.wlac_specific/rfc/windows_signal.h>
+//#include <.wlac_specific/rfc2/windows_signal.h>
 #include <pthread.h>
+#include <.wlac_specific/redesigned/sys/types.h>
+#include <time.h>
 
+# define __SI_MAX_SIZE     128
+# if __WORDSIZE == 64
+#ifndef __SI_PAD_SIZE
+#  define __SI_PAD_SIZE     ((__SI_MAX_SIZE / sizeof (int)) - 4)
+#endif
+# else
+#ifndef __SI_PAD_SIZE
+#  define __SI_PAD_SIZE     ((__SI_MAX_SIZE / sizeof (int)) - 3)
+#endif
+# endif
 
 #ifndef SIGIO
 #define	SIGIO		29	/* I/O now possible (4.2 BSD).  */
@@ -68,6 +80,72 @@ typedef unsigned int pid_t;
 #define pid_t_defined
 #endif
 
+/* Type for data associated with a signal.  */
+typedef union sigval
+{
+	int sival_int;
+	void *sival_ptr;
+} sigval_t;
+
+typedef struct siginfo
+{
+	int si_signo;		/* Signal number.  */
+	int si_errno;		/* If non-zero, an errno value associated with
+						this signal, as defined in <errno.h>.  */
+	int si_code;		/* Signal code.  */
+
+	union
+	{
+		int _pad[__SI_PAD_SIZE];
+
+		/* kill().  */
+		struct
+		{
+			pid_t si_pid;	/* Sending process ID.  */
+			uid_t si_uid;	/* Real user ID of sending process.  */
+		} _kill;
+
+		/* POSIX.1b timers.  */
+		struct
+		{
+			int si_tid;		/* Timer ID.  */
+			int si_overrun;	/* Overrun count.  */
+			sigval_t si_sigval;	/* Signal value.  */
+		} _timer;
+
+		/* POSIX.1b signals.  */
+		struct
+		{
+			pid_t si_pid;	/* Sending process ID.  */
+			uid_t si_uid;	/* Real user ID of sending process.  */
+			sigval_t si_sigval;	/* Signal value.  */
+		} _rt;
+
+		/* SIGCHLD.  */
+		struct
+		{
+			pid_t si_pid;	/* Which child.  */
+			uid_t si_uid;	/* Real user ID of sending process.  */
+			int si_status;	/* Exit value or signal.  */
+			clock_t si_utime;
+			clock_t si_stime;
+		} _sigchld;
+
+		/* SIGILL, SIGFPE, SIGSEGV, SIGBUS.  */
+		struct
+		{
+			void *si_addr;	/* Faulting insn/memory ref.  */
+		} _sigfault;
+
+		/* SIGPOLL.  */
+		struct
+		{
+			long int si_band;	/* Band event for SIGPOLL.  */
+			int si_fd;
+		} _sigpoll;
+	} _sifields;
+} siginfo_t;
+
 /* Structure describing the action to be taken when a signal arrives.  */
 struct sigaction
 {
@@ -97,37 +175,45 @@ struct sigaction
 	void(*sa_restorer) (void);
 };
 
+// #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(wlac_poll_needed) || defined(poll_needed)
 
 BEGIN_C_DECL2
 
 /* Clear all signals from SET.  */
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigemptyset_needed)
 WLAC_EXPORT int sigemptyset(sigset_t *__set) __THROW;
+#endif
 /* Add SIGNO to SET.  */
-WLAC_EXPORT int sigaddset(sigset_t *__set, int __signo) __THROW;
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigaddset_needed)
+WLAC_EXPORT int sigaddset(sigset_t *__set, int __signo) ;
+#endif
 /* Get and/or set the action for signal SIG.  */
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigaction_needed)
 WLAC_EXPORT int sigaction(int sig, const struct sigaction *RESTRICT action, struct sigaction *RESTRICT oldAction) __THROW;
-WLAC_EXPORT signal_handler_simple_type wlac_signal(int a_sig, signal_handler_simple_type a_handler);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(pthread_sigmask_needed)
 WLAC_EXPORT int pthread_sigmask(int how, const sigset_t *set, sigset_t *oldset);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(pthread_kill_needed)
 WLAC_EXPORT int pthread_kill(pthread_t thread, int sig);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigtimedwait_needed) || defined(sigwaitinfo_needed)
 WLAC_EXPORT int sigtimedwait(const sigset_t * a_set, siginfo_t * a_info, const struct timespec * a_timeout);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigwait_needed)
 WLAC_EXPORT int sigwait(const sigset_t *set, int *sig);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigfillset_needed)
 WLAC_EXPORT int sigfillset(sigset_t *set);
+#endif
 
-#define sigwaitinfo(_set,_info)	sigtimedwait((_set),(_info),NULL)
-#define signal	wlac_signal
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigwaitinfo_needed)
+#define sigwaitinfo(_set,_info)	sigtimedwait((_set),(_info),NEWNULLPTR2)
+#endif
+//#define signal	wlac_signal
 
 END_C_DECL2
 
-// should be defined after everything is known
-//#include <bits/sigaction.h>
-//#include <bits/signum.h>
-//#include <bits/siginfo.h>
-//#include <sdef_gem_windows.h>
-#include <.wlac_specific/redesigned/sys/types.h>
-//#include <windows.h>
-// from remote_function_call project
-#include <.wlac_specific/rfc/windows_signal.h> 
-#include <.wlac_specific/rfc/remote_function_caller.h>
 
 
 #endif  /* #ifndef __win_signal_new_h__ */

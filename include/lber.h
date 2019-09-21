@@ -27,7 +27,7 @@ BEGIN_C_DECL2
 #include <Windows.h>
 #include <Winldap.h>
 
-#if !defined(IFNORE_ALL_WLAC_SYMBOLS) || defined(ber_free_needed)
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(ber_free_needed)
 WINLDAPAPI VOID LDAPAPI ber_free(BerElement *ber, int freebuf);
 #endif
 

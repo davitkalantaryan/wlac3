@@ -20,10 +20,12 @@
 #pragma include_alias( "time.h", "time.h" )
 #include <time.h>
 
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(strerror_needed)
 #ifdef strftime
 #undef strftime
 #endif
 #define strftime wlac_strftime
+#endif
 
 
 #if defined(_MSC_VER) && (_MSC_VER>=1900) && defined(_INC_TIME)
@@ -43,22 +45,36 @@ struct timespec {
 #endif  // #if !defined(__timespec_defined) && !defined(timespec_defined)
 
 //char *ctime_r(const time_t *timep, char *buf);
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(ctime_r_needed)
 #if !defined(ctime_r) & !defined(ctime_r_defined)
 #define ctime_r(_a_timep, _a_buf)	(ctime((_a_timep)) ? strcpy((_a_buf),ctime((_a_timep))) : NULL)
 #endif  // #if !defined(ctime_r) & !defined(ctime_r_defined)
+#endif
 
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(localtime_r_needed)
 #ifdef localtime_r
 #undef localtime_r
 #endif
 #define	localtime_r(_timep_,_result_)	(localtime(_timep_) ? ((struct tm*)memcpy((_result_),localtime(_timep_),sizeof(struct tm))) : NULL)
+#endif
 
-__BEGIN_C_DECLS
+BEGIN_C_DECL2
 
-GEM_API_FAR int nanosleep(const struct timespec *a_req, struct timespec *a_rem);
-GEM_API_FAR char *strptime(const char *s, const char *format, struct tm *tm);
-GEM_API_FAR size_t wlac_strftime(char *strDest, size_t maxsize, const char *format, const struct tm *timeptr);
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(nanosleep_needed)
+WLAC_EXPORT int nanosleep(const struct timespec *a_req, struct timespec *a_rem);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(strptime_needed)
+WLAC_EXPORT char *strptime(const char *s, const char *format, struct tm *tm);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(wlac_strftime_needed) || defined(strftime_needed)
+WLAC_EXPORT size_t wlac_strftime(char *strDest, size_t maxsize, const char *format, const struct tm *timeptr);
+#endif
 
-__END_C_DECLS
+#if (!defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(strftime_needed)) && !defined(strftime_not_needed)
+#define strftime	wlac_strftime
+#endif
+
+END_C_DECL2
 
 
 #endif  /* #ifndef __win_time_new_h__ */

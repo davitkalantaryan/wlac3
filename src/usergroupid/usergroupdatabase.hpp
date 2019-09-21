@@ -7,7 +7,7 @@
 
 //#include "unix_like_user_group_header.h"
 #include "util/common_hashtbl.hpp"
-#include "util/common_list.hpp"
+//#include "util/common_list.hpp"
 
 
 
@@ -21,7 +21,7 @@ public:
 
 
 private:
-	common::List<struct SUserDetails*>		m_list;
+	//common::List<struct SUserDetails*>		m_list;
 	common::HashTbl<struct SUserDetails*>	m_hashByUserName;
 	//common::HashTbl<struct SUserDetails*>	m_hashByGroupName;
 	common::HashTbl<struct SUserDetails*>	m_hashByUserId;

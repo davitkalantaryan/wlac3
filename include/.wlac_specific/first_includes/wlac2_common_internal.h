@@ -7,8 +7,23 @@
 #define WLAC2_first_includes__wlac2_common_internal_h
 //#ifndef WLAC2_first_includes__common_definations_wul_h
 
+#ifdef __INTELLISENSE__
+typedef unsigned long       DWORD;
+#endif
+
 #ifndef DEFINE_WLAC_INTERNALS
 #define DEFINE_WLAC_INTERNALS
+
+#ifdef _WIN64
+#ifdef __WORDSIZE
+#undef __WORDSIZE
+#endif
+#define __WORDSIZE 64
+#else
+#ifndef _USE_32BIT_TIME_T
+#define _USE_32BIT_TIME_T
+#endif
+#endif  // #ifdef _WIN64
 
 #ifdef __cplusplus
 #define BEGIN_C_DECL2		extern "C"{
@@ -66,6 +81,18 @@
 #else
 #define NEWNULLPTR2 NULL
 #endif
+
+#ifndef __THROW
+#define __THROW
+#endif
+
+#ifndef RESTRICT
+#if(_MSC_VER >= 1400)
+#define RESTRICT	__restrict
+#else
+#define RESTRICT
+#endif
+#endif  // #ifndef RESTRICT
 
 #define	USERGROUPID_EXPORT2
 

@@ -15,11 +15,11 @@ BEGIN_C_DECL2
 /* Type used for the number of file descriptors.  */
 typedef unsigned long int nfds_t;
 
-#if !defined(IFNORE_ALL_WLAC_SYMBOLS) || defined(poll_sockets_needed) || defined(poll_needed)
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(poll_sockets_needed) || defined(poll_needed)
 WLAC_EXPORT int poll_sockets(struct pollfd *fds, nfds_t nfds, int timeout);
 #endif
 
-#if !defined(IFNORE_ALL_WLAC_SYMBOLS) || defined(wlac_poll_needed) || defined(poll_needed)
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(wlac_poll_needed) || defined(poll_needed)
 WLAC_EXPORT int wlac_poll(struct pollfd *fds, nfds_t nfds, int timeout);
 #endif
 

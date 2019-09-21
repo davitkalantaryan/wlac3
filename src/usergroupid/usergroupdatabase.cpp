@@ -15,8 +15,8 @@ extern "C" int get_unix_user_group_id(int a_accessType, struct SUserDetails* a_u
 
 UserGroupDatabase::UserGroupDatabase()
 	:
-	m_list()
-	,m_hashByUserName(512)
+	//m_list(),
+	m_hashByUserName(512)
 	//,m_hashByGroupName(512)
 	,m_hashByUserId(512)
 	//,m_hashByGroupId(512)
@@ -69,7 +69,7 @@ int UserGroupDatabase::get_unix_user_group_idCls(enum INPUT_PARAMETER a_accessTy
 			else {pItem2->gn.groupNamePrivate= a_usr->gn.groupNamePrivate;}
 
 			// time to cash it
-			m_list.AddToTheEnd(pItem2);
+			//m_list.AddToTheEnd(pItem2);
 			m_hashByUserName.AddEntry(pItem2->un.userName,strlen(pItem2->un.userName),pItem2);
 			//m_hashByGroupName.AddEntry(pItem2->gn.groupName,strlen(pItem2->gn.groupName),pItem2);
 			m_hashByUserId.AddEntry(&pItem2->m_UID,sizeof(pItem2->m_UID),pItem2);
