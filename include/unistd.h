@@ -60,6 +60,10 @@ USERGROUPID_EXPORT2 gid_t getegid(void);
 USERGROUPID_EXPORT2 int getgroups(int gidsetsize, gid_t grouplist[]);
 #endif
 
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(WLAC2_SetLibraryCleaning_needed)
+WLAC_EXPORT int WLAC2_SetLibraryCleaning(BOOL isFreeLibraryCalled);
+#endif
+
 END_C_DECL2
 
 

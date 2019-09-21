@@ -17,7 +17,6 @@
 
 __BEGIN_C_DECLS
 
-GEM_API_FAR int* wlac_errno(void);
 
 __END_C_DECLS
 

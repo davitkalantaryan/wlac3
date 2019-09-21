@@ -35,8 +35,17 @@
 #endif
 # endif
 
+// http://man7.org/linux/man-pages/man7/signal.7.html
+// SIGIO is different for different architectures
+// for x86 and arm it is 29
 #ifndef SIGIO
 #define	SIGIO		29	/* I/O now possible (4.2 BSD).  */
+#endif
+#ifndef SIGALRM
+#define	SIGALRM		14	/* I/O now possible (4.2 BSD).  */
+#endif
+#ifndef SIGPIPE
+#define	SIGPIPE		13	/* I/O now possible (4.2 BSD).  */
 #endif
 
 # define SA_RESTART   0x10000000 /* Restart syscall on signal return.  */
@@ -181,7 +190,7 @@ BEGIN_C_DECL2
 
 /* Clear all signals from SET.  */
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigemptyset_needed)
-WLAC_EXPORT int sigemptyset(sigset_t *__set) __THROW;
+WLAC_EXPORT int sigemptyset(sigset_t *__set) ;
 #endif
 /* Add SIGNO to SET.  */
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigaddset_needed)
@@ -189,7 +198,7 @@ WLAC_EXPORT int sigaddset(sigset_t *__set, int __signo) ;
 #endif
 /* Get and/or set the action for signal SIG.  */
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigaction_needed)
-WLAC_EXPORT int sigaction(int sig, const struct sigaction *RESTRICT action, struct sigaction *RESTRICT oldAction) __THROW;
+WLAC_EXPORT int sigaction(int sig, const struct sigaction * action, struct sigaction * oldAction) ;
 #endif
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(pthread_sigmask_needed)
 WLAC_EXPORT int pthread_sigmask(int how, const sigset_t *set, sigset_t *oldset);
@@ -205,6 +214,18 @@ WLAC_EXPORT int sigwait(const sigset_t *set, int *sig);
 #endif
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigfillset_needed)
 WLAC_EXPORT int sigfillset(sigset_t *set);
+#endif
+
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(kill_needed)
+WLAC_EXPORT int kill(pid_t pid, int sig);
+#endif
+
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigemptyset_needed)
+WLAC_EXPORT int sigemptyset(sigset_t *set);
+#endif
+
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigaddset_needed)
+WLAC_EXPORT int sigaddset(sigset_t *set, int signum);
 #endif
 
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigwaitinfo_needed)

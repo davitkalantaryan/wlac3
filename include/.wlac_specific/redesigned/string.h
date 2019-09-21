@@ -19,6 +19,12 @@ BEGIN_C_DECL2
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(wlac_strerror_needed) || defined(strerror_needed)
 WLAC_EXPORT char* wlac_strerror(int errnum);
 #endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(strcasecmp_needed)
+WLAC_EXPORT int strcasecmp(const char *s1, const char *s2);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(strncasecmp_needed)
+WLAC_EXPORT int strncasecmp(const char *s1, const char *s2, size_t n);
+#endif
 
 END_C_DECL2
 

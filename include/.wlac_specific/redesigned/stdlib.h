@@ -8,17 +8,20 @@
 #ifndef __wlac_redesigned_stdlib_h__
 #define __wlac_redesigned_stdlib_h__
 
-#include <.wlac_specific/first_includes/common_include_for_headers.h>
+#include <.wlac_specific/first_includes/wlac2_common_internal.h>
 #include <.wlac_specific/.privatei/header_for_resolving_errno.h>
 
 
-__BEGIN_C_DECLS
+BEGIN_C_DECL2
 
-GEM_API_FAR char* wlac_getenv(const char* a_name);
-GEM_API_FAR int* wlac_errno(void);
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(wlac_getenv_needed) || defined(getenv_needed)
+WLAC_EXPORT char* wlac_getenv(const char* a_name);
+#endif
 
-__END_C_DECLS
+END_C_DECL2
 
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(getenv_needed)
 #define getenv wlac_getenv
+#endif
 
 #endif  // #ifndef __wlac_redesigned_stdlib_h__

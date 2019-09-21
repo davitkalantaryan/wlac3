@@ -55,7 +55,7 @@ struct timespec {
 #ifdef localtime_r
 #undef localtime_r
 #endif
-#define	localtime_r(_timep_,_result_)	(localtime(_timep_) ? ((struct tm*)memcpy((_result_),localtime(_timep_),sizeof(struct tm))) : NULL)
+#define	localtime_r(_timep_,_result_)	(localtime(_timep_) ? ((struct tm*)memcpy((_result_),localtime(_timep_),sizeof(struct tm))) : NEWNULLPTR2)
 #endif
 
 BEGIN_C_DECL2
@@ -68,6 +68,9 @@ WLAC_EXPORT char *strptime(const char *s, const char *format, struct tm *tm);
 #endif
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(wlac_strftime_needed) || defined(strftime_needed)
 WLAC_EXPORT size_t wlac_strftime(char *strDest, size_t maxsize, const char *format, const struct tm *timeptr);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(gettimeofday_needed)
+WLAC_EXPORT int gettimeofday(struct timeval *tv, struct timezone *tz);
 #endif
 
 #if (!defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(strftime_needed)) && !defined(strftime_not_needed)

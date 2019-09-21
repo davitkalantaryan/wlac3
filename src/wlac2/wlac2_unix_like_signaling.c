@@ -26,3 +26,12 @@ WLAC_EXPORT int sigaddset(sigset_t *a_set, int a_signo)
 	return 0;
 }
 #endif
+
+// todo: Empty
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigaddset_needed)
+WLAC_EXPORT int sigaction(int a_sig, const struct sigaction * a_action, struct sigaction * a_oldAction)
+{
+
+	return 0;
+}
+#endif

@@ -9,6 +9,7 @@
 #define WLAC2_dot_privatei__header_for_resolving_errno_h
 
 //#include <first_includes/common_include_for_headers.h>
+#include <.wlac_specific/first_includes/wlac2_common_internal.h>
 
 #pragma include_alias( <errno.h>, <errno.h> )
 #pragma include_alias( <stddef.h>, <stddef.h> )
@@ -27,17 +28,23 @@
 
 __BEGIN_C_DECLS
 
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(wlac_errno_needed) || defined(errno_needed)
 GEM_API_FAR int* wlac_errno(void);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(wlac_exit_needed) || defined(exit_needed)
 GEM_API_FAR void wlac_exit(int status, int signal);
+#endif
 
 __END_C_DECLS
 
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(errno_needed)
 #ifdef errno
 #undef errno
 #endif
-
 #define errno (*wlac_errno())
+#endif
 
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(exit_needed)
 #if ( !defined(__cplusplus)||defined(exit_redefination_needed) ) && !defined(exit_redefination_not_needed)
 
 #ifdef SIGNAL_FOR_EXIT
@@ -51,6 +58,7 @@ __END_C_DECLS
 #endif
 
 #endif   // #if ( !defined(__cplusplus)||defined(exit_redefination_needed) ) && !defined(exit_redefination_not_needed)
+#endif  // #if !defined(IGNORE_ALL_WLAC_SYMBOLS) ||defined(exit_needed)
 
 
 #endif  // #ifndef WLAC2_dot_privatei__header_for_resolving_errno_h
