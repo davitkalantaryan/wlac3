@@ -43,7 +43,7 @@
  * This file should only contain common data (global data) that is exported
  * by public interfaces 
  */
-struct opaque_auth _null_auth;
+DllExport struct opaque_auth _null_auth;
 #ifdef FD_SETSIZE
 DllExport fd_set svc_fdset;
 #else

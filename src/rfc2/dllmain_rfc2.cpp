@@ -220,7 +220,7 @@ static DWORD WINAPI PTHREAD_START_ROUTINE_on_remote_app(LPVOID a_lpThreadParamet
 	fpFunction = (TypeFunctionIsCalledOnRemote)GetProcAddress(hLibrary, FUNCTION_NAME_FROM_INJECT(pInjectData,*pInjectData));
 	if(!fpFunction){ nReturn = RFC2_FUNCTION_NOT_FOUND;goto returnPoint;}
 
-	pFncReturn = (*fpFunction)(MEMORY_FROM_INJECT(pInjectData,*pInjectData),(int)pInjectData->memorySize);
+	pFncReturn = (*fpFunction)(MEMORY_FROM_INJECT(pInjectData,*pInjectData),STATIC_CAST2(size_t,pInjectData->memorySize));
 
 	nReturn = 0;
 returnPoint:

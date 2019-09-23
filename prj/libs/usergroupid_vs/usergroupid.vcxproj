@@ -238,7 +238,6 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Comma
     <ClCompile Include="..\..\..\src\usergroupid\usergroupdatabase.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\unix_like_user_group_header.h" />
     <ClInclude Include="..\..\..\src\include\util\common_hashtbl.hpp" />
     <ClInclude Include="..\..\..\src\include\util\common_hashtbl.impl.hpp" />
     <ClInclude Include="..\..\..\src\include\util\common_list.hpp" />

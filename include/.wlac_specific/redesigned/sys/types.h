@@ -119,6 +119,7 @@ typedef int int32_t;
 typedef unsigned int uid_t;
 typedef uid_t __uid_t;
 #define __uid_t_defined
+#define uid_t_defined
 #endif  // #if !defined(__uid_t_defined) && !defined(uid_t_defined)
 
 #if !defined(pid_t_defined)
@@ -127,10 +128,11 @@ typedef unsigned int pid_t;
 #endif
 
 
-#ifndef __gid_t_defined
+#if !defined(__gid_t_defined) && !defined(gid_t_defined)
 typedef __uint32_t gid_t;
 typedef gid_t __gid_t;
 #define __gid_t_defined
+#define gid_t_defined
 #endif
 
 #ifndef __P
@@ -192,12 +194,18 @@ struct shmid_ds
 #define shmid_ds_defined
 #endif
 
-__BEGIN_C_DECLS
+BEGIN_C_DECL2
 
-GEM_API_FAR key_t ftok(const char *pathname, int proj_id);
-GEM_API_FAR void *shmat(segment_t shmid, const void *shmaddr, int shmflg);
-GEM_API_FAR int shmdt(const void *shmaddr);
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(ftok_needed)
+WLAC_EXPORT key_t ftok(const char *pathname, int proj_id);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(shmat_needed)
+WLAC_EXPORT void *shmat(segment_t shmid, const void *shmaddr, int shmflg);
+#endif
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(shmdt_needed)
+WLAC_EXPORT int shmdt(const void *shmaddr);
+#endif
 
-__END_C_DECLS
+END_C_DECL2
 
 #endif  /* #ifndef __win_sys_types_new_h__ */

@@ -48,6 +48,8 @@
 #define	SIGPIPE		13	/* I/O now possible (4.2 BSD).  */
 #endif
 
+#define	_NSIG		65
+
 # define SA_RESTART   0x10000000 /* Restart syscall on signal return.  */
 
 /* Values for the HOW argument to `sigprocmask'.  */

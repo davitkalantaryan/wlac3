@@ -9,8 +9,11 @@
 
 #include <.wlac_specific/first_includes/wlac2_common_internal.h>
 #include <stddef.h>
+#include <.wlac_specific/redesigned/windows.h>
 
 BEGIN_C_DECL2
+
+#define WLAC_GLOBAL_HASH_SIZE		4096
 
 struct WlacListItem {
 	struct WlacListItem *prev, *next;
@@ -26,6 +29,9 @@ struct HashByPointer {
 	size_t						tableSize; // later on this will be power of 2
 	struct WlacListItem**		table;
 };
+
+extern HIDDEN_SYMBOL2 struct HashByPointer*				gh_pWlacGlobalHash;
+extern HIDDEN_SYMBOL2 HANDLE							gh_mutexForGlobalHash;
 
 // list API
 HIDDEN_SYMBOL2 void							WlacListItem_Construct(struct WlacListItem* ARGNONULL2 item);
@@ -43,6 +49,12 @@ HIDDEN_SYMBOL2 int							HashByPointer_AddNew(struct HashByPointer* hash, void* 
 HIDDEN_SYMBOL2 struct HashByPointerItem*	HashByPointer_GetItemByKey(struct HashByPointer* hash, void* key, size_t* ARGNONULL2 a_pIntex);
 HIDDEN_SYMBOL2 void*						HashByPointer_GetValueByKey(struct HashByPointer* hash, void* key);
 HIDDEN_SYMBOL2 void							HashByPointer_RemoveEntry(struct HashByPointer* hash, void* key);
+
+
+HIDDEN_SYMBOL2 int							HashByPointer_AddNew_GlobalHash(void* key, void* data);
+HIDDEN_SYMBOL2 struct HashByPointerItem*	HashByPointer_GetItemByKey_GlobalHash(void* key, size_t* ARGNONULL2 a_pIntex);
+HIDDEN_SYMBOL2 void*						HashByPointer_GetValueByKey_GlobalHash(void* key);
+HIDDEN_SYMBOL2 void							HashByPointer_RemoveEntry_GlobalHash(void* key);
 
 
 END_C_DECL2

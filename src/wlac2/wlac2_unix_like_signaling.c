@@ -7,6 +7,21 @@
 #include <.wlac_specific/first_includes/wlac2_common_internal.h>
 #include <.wlac_specific/redesigned/signal.h>
 #include <memory.h>
+#include <wlac_threading_private.h>
+#include <wlac_internal_private.h>
+#include <.wlac_specific/rfc2/wlac2_rfc2.h>
+
+BEGIN_C_DECL2
+
+HIDDEN_SYMBOL2 struct PSignalData			gh_globalSignalData;
+
+static _inline BOOL CheckSignalValidity(int a_sig)
+{
+	if ((a_sig >= 0) && (a_sig < _NSIG)) {
+		return TRUE;
+	}
+	return FALSE;
+}
 
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigemptyset_needed)
 WLAC_EXPORT int sigemptyset(sigset_t *a_set)
@@ -28,10 +43,70 @@ WLAC_EXPORT int sigaddset(sigset_t *a_set, int a_signo)
 #endif
 
 // todo: Empty
-#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigaddset_needed)
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(sigaction_needed)
 WLAC_EXPORT int sigaction(int a_sig, const struct sigaction * a_action, struct sigaction * a_oldAction)
 {
+	struct PthreadPrivate* pThisThreadData ;
+
+	if(!CheckSignalValidity(a_sig)){
+		return ERANGE;
+	}
+
+	pThisThreadData = GetOrCreateCurrentThreadData();
+	if(!pThisThreadData){
+		return ENOMEM;
+	}
+
+	if(a_oldAction){
+		*a_oldAction = pThisThreadData->signalData.sigActions[a_sig];
+	}
+
+	if(a_action){
+		pThisThreadData->signalData.sigActions[a_sig] = *a_action;
+		pThisThreadData->signalData.isSigactionCalled = 1;
+		gh_globalSignalData.sigActions[a_sig] = *a_action;
+		gh_globalSignalData.isSigactionCalled = 1;
+	}
 
 	return 0;
 }
 #endif
+
+
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(kill_needed)
+
+WLAC_EXPORT void* FunctionCalledOnRemoteProcess(void* a_pData, size_t a_nMemoryLength)
+{
+	struct siginfo* pSigData = STATIC_CAST2(struct siginfo*, a_pData);
+
+	if((a_nMemoryLength!=sizeof(struct siginfo))||(!pSigData)){
+		return STATIC_CAST2(void*,ENODATA);
+	}
+
+	if(!CheckSignalValidity(pSigData->si_signo)){
+		return STATIC_CAST2(void*, ERANGE);
+	}
+
+	//if()
+
+	return NEWNULLPTR2;
+}
+
+WLAC_EXPORT int kill(pid_t a_pid, int a_sig)
+{
+	struct siginfo	sigData;
+	void* pReturn;
+
+	if(!CheckSignalValidity(a_sig)){
+		return ERANGE;
+	}
+
+	sigData.si_signo = a_sig;
+
+	CallFunctionOnRemoteProcessByPid(a_pid,gh_path,"FunctionCalledOnRemoteProcess",&sigData,sizeof(struct siginfo),&pReturn);
+
+	return STATIC_CAST2(int, REINTERPRET_CAST2(size_t,pReturn));
+}
+#endif
+
+END_C_DECL2

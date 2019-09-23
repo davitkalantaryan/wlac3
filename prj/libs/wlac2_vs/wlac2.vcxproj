@@ -135,7 +135,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)../../../include;$(ProjectDir)../../../src/include_p</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOT_USE_WLAC_REDESIGNED;WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
@@ -145,6 +145,8 @@ copy /Y $(OutDir)$(ProjectName).lib $(ProjectDir)..\..\..\sys\win_msc_$(Platform
     </PostBuildEvent>
     <Link>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>rfc2.lib;Ws2_32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -154,7 +156,7 @@ copy /Y $(OutDir)$(ProjectName).lib $(ProjectDir)..\..\..\sys\win_msc_$(Platform
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)../../../include;$(ProjectDir)../../../src/include_p</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOT_USE_WLAC_REDESIGNED;WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
@@ -164,6 +166,8 @@ copy /Y $(OutDir)$(ProjectName).lib $(ProjectDir)..\..\..\sys\win_msc_$(Platform
     </PostBuildEvent>
     <Link>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>rfc2.lib;Ws2_32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -173,7 +177,7 @@ copy /Y $(OutDir)$(ProjectName).lib $(ProjectDir)..\..\..\sys\win_msc_$(Platform
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)../../../include;$(ProjectDir)../../../src/include_p</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOT_USE_WLAC_REDESIGNED;WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
@@ -183,6 +187,8 @@ copy /Y $(OutDir)$(ProjectName).lib $(ProjectDir)..\..\..\sys\win_msc_$(Platform
     </PostBuildEvent>
     <Link>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>rfc2.lib;Ws2_32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -194,12 +200,14 @@ copy /Y $(OutDir)$(ProjectName).lib $(ProjectDir)..\..\..\sys\win_msc_$(Platform
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)../../../include;$(ProjectDir)../../../src/include_p</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOT_USE_WLAC_REDESIGNED;WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>rfc2.lib;Ws2_32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
@@ -217,12 +225,14 @@ copy /Y $(OutDir)$(ProjectName).lib $(ProjectDir)..\..\..\sys\win_msc_$(Platform
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)../../../include;$(ProjectDir)../../../src/include_p</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOT_USE_WLAC_REDESIGNED;WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>rfc2.lib;Ws2_32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
@@ -240,12 +250,14 @@ copy /Y $(OutDir)$(ProjectName).lib $(ProjectDir)..\..\..\sys\win_msc_$(Platform
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)../../../include;$(ProjectDir)../../../src/include_p</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOT_USE_WLAC_REDESIGNED;WLAC_DLL_CRAETION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ImportLibrary>$(OutDir)$(ProjectName).lib</ImportLibrary>
+      <AdditionalDependencies>rfc2.lib;Ws2_32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
@@ -290,6 +302,7 @@ copy /Y $(OutDir)$(ProjectName).lib $(ProjectDir)..\..\..\sys\win_msc_$(Platform
     <ClInclude Include="..\..\..\include\lber.h" />
     <ClInclude Include="..\..\..\include\ldap.h" />
     <ClInclude Include="..\..\..\include\netinet\in.h" />
+    <ClInclude Include="..\..\..\include\net\if.h" />
     <ClInclude Include="..\..\..\include\poll.h" />
     <ClInclude Include="..\..\..\include\pthread.h" />
     <ClInclude Include="..\..\..\include\pwd.h" />
@@ -316,11 +329,21 @@ copy /Y $(OutDir)$(ProjectName).lib $(ProjectDir)..\..\..\sys\win_msc_$(Platform
     <ClInclude Include="..\..\..\include\sys\socket.h" />
     <ClInclude Include="..\..\..\include\sys\time.h" />
     <ClInclude Include="..\..\..\include\unistd.h" />
+    <ClInclude Include="..\..\..\src\include_p\wlac_internal_private.h" />
+    <ClInclude Include="..\..\..\src\include_p\wlac_list_and_hashtables.h" />
+    <ClInclude Include="..\..\..\src\include_p\wlac_threading_private.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\src\wlac2\gem_ipc_source.cpp" />
+    <ClCompile Include="..\..\..\src\wlac2\gem_networking.cpp" />
+    <ClCompile Include="..\..\..\src\wlac2\unix_emul_source_half_implemet.cpp" />
+    <ClCompile Include="..\..\..\src\wlac2\unix_sync_objects.cpp" />
     <ClCompile Include="..\..\..\src\wlac2\wlac2_library_entry_point.c" />
+    <ClCompile Include="..\..\..\src\wlac2\wlac2_threading.c" />
     <ClCompile Include="..\..\..\src\wlac2\wlac2_unix_like_signaling.c" />
+    <ClCompile Include="..\..\..\src\wlac2\wlac_different_functions.c" />
     <ClCompile Include="..\..\..\src\wlac2\wlac_list_and_hashtables.c" />
+    <ClCompile Include="..\..\..\src\wlac2\wlac_timing_functions.c" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\include\.wlac_specific\redesigned\fstream" />

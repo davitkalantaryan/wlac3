@@ -6,6 +6,14 @@
 #ifndef WLAC2_rpc__wlac2_sunrpc_internal_h
 #define WLAC2_rpc__wlac2_sunrpc_internal_h
 
+#ifdef SUNRPC_LIB_CREATION
+#define SUNRPC_LIB_EXPORT	_declspec(dllexport)
+#elif defined(SUNRPC_SOURCES_USED)
+#define SUNRPC_LIB_EXPORT
+#else
+#define SUNRPC_LIB_EXPORT	_declspec(dllimport)
+#endif
+
 #ifndef DEFINE_WLAC_INTERNALS
 #define DEFINE_WLAC_INTERNALS
 

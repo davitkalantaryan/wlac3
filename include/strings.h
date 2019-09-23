@@ -10,6 +10,7 @@
 
 #include <.wlac_specific/first_includes/wlac2_common_internal.h>
 #include <.wlac_specific/redesigned/sys/types.h>
+#include <stddef.h>
 
 BEGIN_C_DECL2
 

@@ -1,5 +1,5 @@
 //
-// file:		rfc/wlac_rfc.h
+// file:		rfc2/wlac_rfc2.h
 // created on:	2018 Dec 17
 //
 
@@ -7,6 +7,7 @@
 #define __wlac_rfc_wlac_rfc_h__
 
 #include <.wlac_specific/first_includes/wlac2_common_internal.h>
+
 #ifndef CINTERFACE
 #define CINTERFACE
 #define CINTERFACE_here_defined
@@ -42,7 +43,7 @@
 
 BEGIN_C_DECL2
 
-typedef void* (*TypeFunctionIsCalledOnRemote)(void*,int);
+typedef void* (*TypeFunctionIsCalledOnRemote)(void*,size_t);
 
 RFC2_API_FAR int CallFunctionOnRemoteProcess(
 	HANDLE hProcess, const char* libName,const char* fncName,void* data, size_t memorySize,void** pReturn);

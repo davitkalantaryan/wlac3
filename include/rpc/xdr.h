@@ -50,6 +50,15 @@
 #define __XDR_HEADER__
 
 #include <rpc/wlac2_sunrpc_internal.h>
+#include <stdint.h>
+
+#define IXDR_GET_INT32(buf)		((long) ntohl ((u_long) *(uint32_t*) buf++) )
+#define IXDR_PUT_INT32(buf, v)   ( *(uint32_t *) (buf)++ = (long) htonl ((u_long) v) )
+#define IXDR_GET_U_INT32(buf)		((long) ntohl ((u_long) *(uint32_t*) buf++) )
+#define IXDR_PUT_U_INT32(buf, v)   ( *(uint32_t *) (buf)++ = (long) htonl ((u_long) v) )
+
+#define	xdr_longlong_t		xdr_long
+#define	xdr_u_longlong_t	xdr_u_long
 
 BEGIN_C_DECL2
 

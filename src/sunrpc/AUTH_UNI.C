@@ -77,9 +77,24 @@ static bool_t	authunix_marshal();
 static bool_t	authunix_validate();
 static bool_t	authunix_refresh();
 static void		authunix_destroy(REGISTER2 struct AUTH_struct*);
-extern g;
-extern u;
 extern void sun_rpc_report(const char* lpszMsg);
+
+#if !defined(__uid_t_defined) && !defined(uid_t_defined)
+typedef unsigned int uid_t;
+typedef uid_t __uid_t;
+#define __uid_t_defined
+#define uid_t_defined
+#endif  // #if !defined(__uid_t_defined) && !defined(uid_t_defined)
+
+#if !defined(__gid_t_defined) && !defined(gid_t_defined)
+typedef uint32_t gid_t;
+typedef gid_t __gid_t;
+#define __gid_t_defined
+#define gid_t_defined
+#endif
+
+uid_t getuid(void);
+gid_t getgid(void);
 
 static struct auth_ops auth_unix_ops = {
 	authunix_nextverf,
@@ -212,8 +227,10 @@ authunix_create_default()
 	machname[MAX_MACHINE_NAME] = 0;
 #ifdef _WIN32
 /* who knows anything better? me!!!*/
-	uid = u;
-	gid = g;
+	//uid = u;
+	//gid = g;
+	uid = getuid();
+	gid = getgid();
 	len = 1;
 	gids[0] = 0;
 #else

@@ -14,7 +14,7 @@
 
 BEGIN_C_DECL2
 
-void bcopy(const void *,void*,size_t);
+SUNRPC_LIB_EXPORT void bcopy(const void *,void*,size_t);
 //void bcopy_nf(char *,char *,int);
 //void bcopy_fn(char *,char *,int);
 //void bcopy_ff(char *,char *,int);

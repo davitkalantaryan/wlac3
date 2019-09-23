@@ -11,7 +11,18 @@
 #include <.wlac_specific/first_includes/wlac2_common_internal.h>
 #include <.wlac_specific/redesigned/sys/types.h>
 
+#if defined(_MSC_VER) || defined(_MSC_EXTENSIONS)
+#define DELTA_EPOCH_IN_MICROSECS  11644473600000000Ui64
+#else
+#define DELTA_EPOCH_IN_MICROSECS  11644473600000000ULL
+#endif
+
 BEGIN_C_DECL2
+
+struct timezone{
+	int tz_minuteswest;		/* Minutes west of GMT.  */
+	int tz_dsttime;		/* Nonzero if DST is ever in effect.  */
+};
 
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(gettimeofday_needed)
 WLAC_EXPORT int gettimeofday(struct timeval *tv, struct timezone *tz);

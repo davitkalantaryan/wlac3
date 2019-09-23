@@ -164,7 +164,7 @@ typedef struct AUTH_struct {
 		((*((auth)->ah_ops->ah_destroy))(auth))
 
 
-extern struct opaque_auth _null_auth;
+extern SUNRPC_LIB_EXPORT struct opaque_auth _null_auth;
 
 
 /*

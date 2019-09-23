@@ -43,6 +43,15 @@
     <Filter Include="Header Files\include\netinet">
       <UniqueIdentifier>{fb45e2fd-4d86-428b-a2de-590d467c9076}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\src">
+      <UniqueIdentifier>{d83c7945-67eb-4f73-a0a9-8570147fd3ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\src\include_p">
+      <UniqueIdentifier>{c9a36ff8-4898-47c8-9afb-1e45758c4790}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\include\net">
+      <UniqueIdentifier>{a95a2d4c-27e7-4a3e-a85b-291d946095e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\include\rpc\auth.h">
@@ -228,6 +237,18 @@
     <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\wlac2_common_internal.h">
       <Filter>Header Files\include\.wlac_specific\first_includes</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\src\include_p\wlac_list_and_hashtables.h">
+      <Filter>Header Files\src\include_p</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\include_p\wlac_threading_private.h">
+      <Filter>Header Files\src\include_p</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\include_p\wlac_internal_private.h">
+      <Filter>Header Files\src\include_p</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\net\if.h">
+      <Filter>Header Files\include\net</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\wlac2\wlac2_library_entry_point.c">
@@ -237,6 +258,27 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\src\wlac2\wlac2_unix_like_signaling.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\wlac2\wlac2_threading.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\wlac2\wlac_timing_functions.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\wlac2\wlac_different_functions.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\wlac2\unix_emul_source_half_implemet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\wlac2\gem_ipc_source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\wlac2\unix_sync_objects.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\wlac2\gem_networking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

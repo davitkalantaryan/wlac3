@@ -9,6 +9,7 @@
 #ifndef WLAC_IGNORE_ALL_IN_HEADERS
 
 #include <.wlac_specific/first_includes/wlac2_common_internal.h>
+#include <.wlac_specific/redesigned/winsock2.h>
 
 BEGIN_C_DECL2
 
@@ -27,7 +28,8 @@ WLAC_EXPORT int wlac_poll(struct pollfd *fds, nfds_t nfds, int timeout);
 END_C_DECL2
 
 
-#if !defined(IGNORE_WLAC_POLL) && !defined(poll)
+//#if !defined(IGNORE_WLAC_POLL) && !defined(poll)
+#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(poll_needed)
 #define  poll wlac_poll
 #endif  // #if !defined(_IGNORE_WLAC_POLL) && !defined(poll)
 

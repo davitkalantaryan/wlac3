@@ -10,6 +10,9 @@
 
 #include <.wlac_specific/first_includes/wlac2_common_internal.h>
 
+#define		SIOCGIFCONF		0x8912		/* get iface list		*/
+#define		SIOCGIFFLAGS	0x8913		/* get flags			*/
+
 BEGIN_C_DECL2
 
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(ioctl_needed)

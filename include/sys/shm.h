@@ -9,6 +9,7 @@
 #ifndef WLAC_IGNORE_ALL_IN_HEADERS
 
 #include <.wlac_specific/first_includes/wlac2_common_internal.h>
+#include <.wlac_specific/redesigned/sys/types.h>
 
 #ifndef PATH_MAX
 #define PATH_MAX	1024
@@ -29,11 +30,11 @@ struct sembuf
 };
 
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(shmctl_needed)
-WLAC_EXPORT int shmctl(int shmid, int cmd, struct shmid_ds *buf);
+WLAC_EXPORT int shmctl(segment_t shmid, int cmd, struct shmid_ds *buf);
 #endif
 
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(shmget_needed)
-int shmget(key_t key, size_t size, int shmflg);
+WLAC_EXPORT segment_t shmget(key_t key, size_t size, int shmflg);
 #endif
 
 END_C_DECL2

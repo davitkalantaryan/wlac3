@@ -23,7 +23,7 @@
  *  bcopy(char *s1, char *s2, int len) --
  *      Copies len bytes from s1 to s2
  */
-void
+_declspec(dllexport) void
 bcopy(s1, s2, len)
 	const void *s1;
 	void* s2;

@@ -16,9 +16,7 @@
 BEGIN_C_DECL2
 
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(gethostbyname_r_needed)
-int gethostbyname_r(const char *name,
-	struct hostent *ret, char *buf, size_t buflen,
-	struct hostent **result, int *h_errnop);
+WLAC_EXPORT int gethostbyname_r(const char *name,struct hostent *ret, char *buf, size_t buflen,struct hostent **result, int *h_errnop);
 #endif
 
 

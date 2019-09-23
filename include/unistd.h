@@ -39,6 +39,8 @@ struct SUserDetails {
 	gid_t		m_vGroups[MAX_NUMBER_OF_GROUPS];
 };
 
+WLAC_EXPORT void WLAC2_DllMain_For_Clean_Called(void* pReservedArg);
+
 #if defined(getuid_needed)
 USERGROUPID_EXPORT2 uid_t getuid(void);
 #endif
@@ -60,9 +62,6 @@ USERGROUPID_EXPORT2 gid_t getegid(void);
 USERGROUPID_EXPORT2 int getgroups(int gidsetsize, gid_t grouplist[]);
 #endif
 
-#if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(WLAC2_SetLibraryCleaning_needed)
-WLAC_EXPORT int WLAC2_SetLibraryCleaning(int isFreeLibraryCalled);
-#endif
 
 END_C_DECL2
 

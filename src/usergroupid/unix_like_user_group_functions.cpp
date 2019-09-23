@@ -159,7 +159,8 @@ USERGROUPID_EXPORT2 int getgroups(int a_size, gid_t a_list[])
 	if( LIKELY(GetUserNameA(vcUserName,&dwBufLen))){
 		InitUserGroupDetails(&aData);
 		aData.un.userName = vcUserName;
-		if (get_uid_gid_ggroup_witch_cashing(UGID_USERNAME,&aData)){errno=EFAULT;return -1;}  // error 
+		//if (get_uid_gid_ggroup_witch_cashing(UGID_USERNAME,&aData)){errno=EFAULT;return -1;}  // error 
+		if (get_uid_gid_ggroup_witch_cashing(UGID_USERNAME,&aData)){SetLastError(EFAULT);return -1;}  // error 
 		//if (aData.m_nNgroups>a_size) { errno= EINVAL; return -1; } // error prone
 		if(a_size>aData.m_nNgroups){a_size=aData.m_nNgroups;}
 		if(a_size){memcpy(a_list,aData.m_vGroups,sizeof(gid_t)*a_size);}

@@ -42,7 +42,7 @@ WLAC_EXPORT int semctl(int semid, int semnum, int cmd, ...);
 #endif
 
 #if !defined(IGNORE_ALL_WLAC_SYMBOLS) || defined(semop_needed)
-int semop(int semid, struct sembuf *sops, size_t nsops);
+WLAC_EXPORT int semop(int semid, struct sembuf *sops, size_t nsops);
 #endif
 
 END_C_DECL2

@@ -139,6 +139,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../../../include;../../../src/sunrpc/private_include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SUNRPC_LIB_CREATION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Ws2_32.lib;Advapi32.lib</AdditionalDependencies>
@@ -158,6 +159,7 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../../../include;../../../src/sunrpc/private_include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SUNRPC_LIB_CREATION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Ws2_32.lib;Advapi32.lib</AdditionalDependencies>
@@ -177,6 +179,7 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../../../include;../../../src/sunrpc/private_include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SUNRPC_LIB_CREATION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Ws2_32.lib;Advapi32.lib</AdditionalDependencies>
@@ -198,6 +201,7 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../../../include;../../../src/sunrpc/private_include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SUNRPC_LIB_CREATION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -221,6 +225,7 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../../../include;../../../src/sunrpc/private_include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SUNRPC_LIB_CREATION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -244,6 +249,7 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>../../../include;../../../src/sunrpc/private_include</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>SUNRPC_LIB_CREATION;_WINDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

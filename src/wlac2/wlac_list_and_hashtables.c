@@ -1,5 +1,5 @@
 //  
-// file:			src/include_p/wlac_hashtables.c  
+// file:			src/wlac2/wlac_hashtables.c  
 // created on:		2019 Aug 24  
 // created by:		Davit Kalantaryan (davit.kalantaryan@desy.de)  
 //  
@@ -21,6 +21,11 @@
 #define REMN_MASK		0x3
 
 #define container_of_wlac(_ptr,_type,_member)	(_type*)(((char*)(_ptr))-offsetof(_type,_member))
+
+BEGIN_C_DECL2
+
+HIDDEN_SYMBOL2 struct HashByPointer*				gh_pWlacGlobalHash = NEWNULLPTR2;
+HIDDEN_SYMBOL2 HANDLE								gh_mutexForGlobalHash = NEWNULLPTR2;
 
 
 HIDDEN_SYMBOL2 void WlacListItem_Construct(struct WlacListItem* ARGNONULL2 a_item)
@@ -175,3 +180,48 @@ HIDDEN_SYMBOL2 void HashByPointer_RemoveEntry(struct HashByPointer* a_hash, void
 		}
 	}
 }
+
+
+HIDDEN_SYMBOL2 int HashByPointer_AddNew_GlobalHash(void* a_key, void* a_data)
+{
+	int nReturn;
+	while (WAIT_IO_COMPLETION == WaitForSingleObjectEx(gh_mutexForGlobalHash, INFINITE, TRUE))
+		;
+	nReturn = HashByPointer_AddNew(gh_pWlacGlobalHash,a_key,a_data);
+	ReleaseMutex(gh_mutexForGlobalHash);
+	return nReturn;
+}
+
+
+HIDDEN_SYMBOL2 struct HashByPointerItem* HashByPointer_GetItemByKey_GlobalHash(void* a_key, size_t* ARGNONULL2 a_pIntex)
+{
+	struct HashByPointerItem* pReturn;
+	while (WAIT_IO_COMPLETION == WaitForSingleObjectEx(gh_mutexForGlobalHash, INFINITE, TRUE))
+		;
+	pReturn = HashByPointer_GetItemByKey(gh_pWlacGlobalHash, a_key, a_pIntex);
+	ReleaseMutex(gh_mutexForGlobalHash);
+	return pReturn;
+}
+
+
+HIDDEN_SYMBOL2 void* HashByPointer_GetValueByKey_GlobalHash(void* a_key)
+{
+	void* pReturn;
+	while (WAIT_IO_COMPLETION == WaitForSingleObjectEx(gh_mutexForGlobalHash, INFINITE, TRUE))
+		;
+	pReturn = HashByPointer_GetValueByKey(gh_pWlacGlobalHash, a_key);
+	ReleaseMutex(gh_mutexForGlobalHash);
+	return pReturn;
+}
+
+
+HIDDEN_SYMBOL2 void HashByPointer_RemoveEntry_GlobalHash(void* a_key)
+{
+	while (WAIT_IO_COMPLETION == WaitForSingleObjectEx(gh_mutexForGlobalHash, INFINITE, TRUE))
+		;
+	HashByPointer_RemoveEntry(gh_pWlacGlobalHash, a_key);
+	ReleaseMutex(gh_mutexForGlobalHash);
+}
+
+
+END_C_DECL2
