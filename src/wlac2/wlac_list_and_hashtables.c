@@ -7,6 +7,9 @@
 #include <wlac_list_and_hashtables.h>
 #include <stdlib.h>
 #include <malloc.h> // for clang this is not necessary
+#include <wlac_internal_private.h>
+
+#define HIDDEN_SYMBOL2  static
 
 //#ifdef _WIN64
 //#define BITS_TO_SHIFT	3
@@ -23,6 +26,7 @@
 #define container_of_wlac(_ptr,_type,_member)	(_type*)(((char*)(_ptr))-offsetof(_type,_member))
 
 BEGIN_C_DECL2
+
 
 HIDDEN_SYMBOL2 struct HashByPointer*				gh_pWlacGlobalHash = NEWNULLPTR2;
 HIDDEN_SYMBOL2 HANDLE								gh_mutexForGlobalHash = NEWNULLPTR2;
@@ -115,7 +119,7 @@ HIDDEN_SYMBOL2 void	HashByPointer_DestructAndFree(struct HashByPointer* a_hash)
 }
 
 
-HIDDEN_SYMBOL2 int HashByPointer_AddNew(struct HashByPointer* a_hash, void* a_key, void* a_data)
+HIDDEN_SYMBOL3 int HashByPointer_AddNew(struct HashByPointer* a_hash, void* a_key, void* a_data)
 {
 	size_t unIndex = HashByPointer_GetIndexByKey(a_hash, a_key);
 	struct HashByPointerItem* pItemNew = STATIC_CAST2(struct HashByPointerItem*,malloc(sizeof(struct HashByPointerItem)));
@@ -133,6 +137,43 @@ HIDDEN_SYMBOL2 int HashByPointer_AddNew(struct HashByPointer* a_hash, void* a_ke
 	}
 
 	return 0;
+}
+
+
+HIDDEN_SYMBOL3 enum LIST_ADD_RET HashByPointer_AddNew2(struct HashByPointer* a_hash, void* a_key, void* a_data, void** a_ppOldData)
+{
+	size_t unIndex = HashByPointer_GetIndexByKey(a_hash, a_key);
+
+	if(UNLIKELY2(a_hash->table[unIndex])){
+		struct HashByPointerItem* pItemNew;
+		struct WlacListItem* iterItem;
+		struct HashByPointerItem* pHashItem;
+		ITERATE_OVER_LIST(a_hash->table[unIndex], iterItem) {
+			pHashItem = container_of_wlac(iterItem,struct HashByPointerItem,listItem);
+			if (pHashItem->key == a_key) {
+				*a_ppOldData = pHashItem->data;
+				return LIST_ADD_ALREADY_EXIST;
+			}
+		}
+
+		pItemNew = STATIC_CAST2(struct HashByPointerItem*, malloc(sizeof(struct HashByPointerItem)));
+		HANDLE_MEM_DEF(pItemNew, "Unable to get memory for HashByPointer_AddNew");
+		pItemNew->key = a_key;
+		pItemNew->data = a_data;
+
+		WlacListItem_AddBefore(a_hash->table[unIndex], &pItemNew->listItem);
+	}
+	else{
+		struct HashByPointerItem* pItemNew = STATIC_CAST2(struct HashByPointerItem*, malloc(sizeof(struct HashByPointerItem)));
+		HANDLE_MEM_DEF(pItemNew, "Unable to get memory for HashByPointer_AddNew");
+		pItemNew->key = a_key;
+		pItemNew->data = a_data;
+
+		WlacListItem_Construct(&pItemNew->listItem);
+		a_hash->table[unIndex] = &pItemNew->listItem;
+	}
+
+	return LIST_ADD_ADDED;
 }
 
 
@@ -182,12 +223,12 @@ HIDDEN_SYMBOL2 void HashByPointer_RemoveEntry(struct HashByPointer* a_hash, void
 }
 
 
-HIDDEN_SYMBOL2 int HashByPointer_AddNew_GlobalHash(void* a_key, void* a_data)
+HIDDEN_SYMBOL3 enum LIST_ADD_RET HashByPointer_AddNew_GlobalHash(void* a_key, void* a_data, void** a_ppOldData)
 {
-	int nReturn;
+	enum LIST_ADD_RET nReturn;
 	while (WAIT_IO_COMPLETION == WaitForSingleObjectEx(gh_mutexForGlobalHash, INFINITE, TRUE))
 		;
-	nReturn = HashByPointer_AddNew(gh_pWlacGlobalHash,a_key,a_data);
+	nReturn = HashByPointer_AddNew2(gh_pWlacGlobalHash,a_key,a_data, a_ppOldData);
 	ReleaseMutex(gh_mutexForGlobalHash);
 	return nReturn;
 }
@@ -204,7 +245,7 @@ HIDDEN_SYMBOL2 struct HashByPointerItem* HashByPointer_GetItemByKey_GlobalHash(v
 }
 
 
-HIDDEN_SYMBOL2 void* HashByPointer_GetValueByKey_GlobalHash(void* a_key)
+HIDDEN_SYMBOL3 void* HashByPointer_GetValueByKey_GlobalHash(void* a_key)
 {
 	void* pReturn;
 	while (WAIT_IO_COMPLETION == WaitForSingleObjectEx(gh_mutexForGlobalHash, INFINITE, TRUE))
@@ -221,6 +262,41 @@ HIDDEN_SYMBOL2 void HashByPointer_RemoveEntry_GlobalHash(void* a_key)
 		;
 	HashByPointer_RemoveEntry(gh_pWlacGlobalHash, a_key);
 	ReleaseMutex(gh_mutexForGlobalHash);
+}
+
+
+
+/*////////////////////////////////////////////////////////////////////////////////////////*/
+static void list_and_hash_clean(void)
+{
+	if (gh_pWlacGlobalHash) {
+		HashByPointer_DestructAndFree(gh_pWlacGlobalHash);
+		gh_pWlacGlobalHash = NEWNULLPTR2;
+	}
+
+	if (gh_mutexForGlobalHash) {
+		CloseHandle(gh_mutexForGlobalHash);
+		gh_mutexForGlobalHash = NEWNULLPTR2;
+	}
+}
+
+
+INITIALIZER(list_and_hash_init) {
+	gh_mutexForGlobalHash = CreateMutex(NEWNULLPTR2, FALSE, NEWNULLPTR2);
+	if (!gh_mutexForGlobalHash) {
+		++gh_nErrorsAccured;
+		list_and_hash_clean();
+		return ;
+	}
+
+	gh_pWlacGlobalHash = HashByPointer_CreateAndConstruct(WLAC_GLOBAL_HASH_SIZE);
+	if (!gh_pWlacGlobalHash) {
+		++gh_nErrorsAccured;
+		list_and_hash_clean();
+		return;
+	}
+
+	atexit(list_and_hash_clean);
 }
 
 

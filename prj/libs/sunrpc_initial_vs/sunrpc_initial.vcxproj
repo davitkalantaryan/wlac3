@@ -30,45 +30,45 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{D71B7002-49BA-443E-8E94-D09C3D24A6A5}</ProjectGuid>
     <RootNamespace>sunrpc_initial</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -103,34 +103,34 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
     <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
     <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
     <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
     <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
     <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
     <TargetName>sunrpc.$(WlacLibraryVersion)</TargetName>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -144,11 +144,11 @@
     <Link>
       <AdditionalDependencies>Ws2_32.lib;Advapi32.lib</AdditionalDependencies>
       <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.objects\lib\$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
-copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
+      <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
+::copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -164,11 +164,11 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
     <Link>
       <AdditionalDependencies>Ws2_32.lib;Advapi32.lib</AdditionalDependencies>
       <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.objects\lib\$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
-copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
+      <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
+::copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -184,11 +184,11 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
     <Link>
       <AdditionalDependencies>Ws2_32.lib;Advapi32.lib</AdditionalDependencies>
       <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.objects\lib\$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
-copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
+      <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
+::copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -208,11 +208,11 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>Ws2_32.lib;Advapi32.lib</AdditionalDependencies>
       <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.objects\lib\$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
-copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
+      <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
+::copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -232,11 +232,11 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>Ws2_32.lib;Advapi32.lib</AdditionalDependencies>
       <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.objects\lib\$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
-copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
+      <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
+::copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -256,11 +256,11 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>Ws2_32.lib;Advapi32.lib</AdditionalDependencies>
       <ModuleDefinitionFile>../../../src/sunrpc/mini_xdr_rpc.def</ModuleDefinitionFile>
-      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\$(ProjectName).lib</ImportLibrary>
+      <ImportLibrary>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.objects\lib\$(ProjectName).lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
-copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
+      <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll
+::copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\.
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

@@ -30,45 +30,45 @@
     <ProjectGuid>{24A96CB6-8A8E-4A57-9D90-31E6AEABDA49}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>usergroupid</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -97,24 +97,28 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -129,8 +133,8 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
-copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Command>
+      <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
+::copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -146,8 +150,8 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Comma
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
-copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Command>
+      <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
+::copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -163,8 +167,8 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Comma
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
-copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Command>
+      <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
+::copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -184,8 +188,8 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Comma
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
-copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Command>
+      <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
+::copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -205,8 +209,8 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Comma
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
-copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Command>
+      <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
+::copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -226,8 +230,8 @@ copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Comma
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
-copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Command>
+      <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
+::copy /Y $(TargetPath) $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\.</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

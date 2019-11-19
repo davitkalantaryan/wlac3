@@ -11,9 +11,11 @@
 #include <wlac_internal_private.h>
 #include <.wlac_specific/rfc2/wlac2_rfc2.h>
 
+#define HIDDEN_SYMBOL2 static
+
 BEGIN_C_DECL2
 
-HIDDEN_SYMBOL2 struct PSignalData			gh_globalSignalData;
+HIDDEN_SYMBOL3 struct PSignalData			gh_globalSignalData;
 
 static _inline BOOL CheckSignalValidity(int a_sig)
 {
@@ -63,9 +65,9 @@ WLAC_EXPORT int sigaction(int a_sig, const struct sigaction * a_action, struct s
 
 	if(a_action){
 		pThisThreadData->signalData.sigActions[a_sig] = *a_action;
-		pThisThreadData->signalData.isSigactionCalled = 1;
+		SET_SIGACTION_BIT(pThisThreadData->signalData.isSigactionCalled2,a_sig);
 		gh_globalSignalData.sigActions[a_sig] = *a_action;
-		gh_globalSignalData.isSigactionCalled = 1;
+		SET_SIGACTION_BIT(gh_globalSignalData.isSigactionCalled2,a_sig);
 	}
 
 	return 0;
@@ -87,7 +89,12 @@ WLAC_EXPORT void* FunctionCalledOnRemoteProcess(void* a_pData, size_t a_nMemoryL
 		return STATIC_CAST2(void*, ERANGE);
 	}
 
-	//if()
+	if(pSigData->si_signo==SIGKILL){
+		_Exit(3);
+	}
+
+	// 1. check whether signal is ignored
+	//		// 1.a if yes, then check whether sigwait is there
 
 	return NEWNULLPTR2;
 }

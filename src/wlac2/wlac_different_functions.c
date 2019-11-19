@@ -21,6 +21,8 @@
 #include <net/if.h>
 #include <io.h>
 
+#define HIDDEN_SYMBOL2 static
+
 
 BEGIN_C_DECL2
 

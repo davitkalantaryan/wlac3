@@ -40,14 +40,14 @@ typedef unsigned long       DWORD;
 #if		defined(_MSC_VER)
 #define EXPORT_SYM_FROM_LIB2		_declspec(dllexport)
 #define IMPORT_SYM_FROM_LIB2		_declspec(dllimport)
-#define HIDDEN_SYMBOL2	
+#define HIDDEN_SYMBOL3	
 #if defined(__cplusplus) // check also version
 #define CPP11_OR_HIGHER2
 #endif
 #elif	defined(__GNUC__)
 #define EXPORT_SYM_FROM_LIB2		
 #define IMPORT_SYM_FROM_LIB2	
-#define HIDDEN_SYMBOL2				__attribute__((visibility(hidden)))	
+#define HIDDEN_SYMBOL3				__attribute__((visibility(hidden)))	
 #if defined(__cplusplus) // check also version
 #define CPP11_OR_HIGHER2
 #endif
@@ -168,6 +168,30 @@ typedef unsigned long       DWORD;
 #pragma include_alias( "string.h", ".wlac_specific/redesigned/string.h" )
 
 #endif  // #ifndef WLAC_INCLUDE_REDIRECTIONS_DONE
+
+
+#ifdef __cplusplus
+#define INITIALIZER(f) \
+        static void f(void); \
+        struct f##_t_ { f##_t_(void) { f(); } }; static f##_t_ f##_; \
+        static void f(void)
+#elif defined(_MSC_VER)
+#pragma section(".CRT$XCU",read)
+#define INITIALIZER2_(f,p) \
+        static void f(void); \
+        __declspec(allocate(".CRT$XCU")) void (*f##_)(void) = f; \
+        __pragma(comment(linker,"/include:" p #f "_")) \
+        static void f(void)
+#if defined(_WIN64) || defined(_M_ARM)
+#define INITIALIZER(f) INITIALIZER2_(f,"")
+#else
+#define INITIALIZER(f) INITIALIZER2_(f,"_")
+#endif
+#else
+#define INITIALIZER(f) \
+        static void f(void) __attribute__((constructor)); \
+        static void f(void)
+#endif
 
 //#endif  // #ifndef WLAC2_first_includes__common_definations_wul_h
 #endif  // #ifndef WLAC2_first_includes__wlac2_common_internal_h

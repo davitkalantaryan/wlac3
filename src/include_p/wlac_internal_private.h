@@ -33,12 +33,13 @@
 
 BEGIN_C_DECL2
 
-extern HIDDEN_SYMBOL2 DWORD		gh_tlsPthreadDataKey;
-extern HIDDEN_SYMBOL2 char		gh_path[];
+extern HIDDEN_SYMBOL3 int		gh_nErrorsAccured;
+extern HIDDEN_SYMBOL3 DWORD		gh_tlsPthreadDataKey;
+extern HIDDEN_SYMBOL3 char		gh_path[];
 
 // list API
 //HIDDEN_SYMBOL2 void							WlacListItem_Construct(struct WlacListItem* ARGNONULL2 item);
-HIDDEN_SYMBOL2 int IsDescriptorASocket(int a_d);
+HIDDEN_SYMBOL3 int IsDescriptorASocket(int a_d);
 
 
 END_C_DECL2

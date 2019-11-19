@@ -86,9 +86,5 @@ WLAC_EXPORT int shmctl(segment_t a_shmid, int a_cmd, struct shmid_ds *a_buf)
 #endif
 
 
-#if 0
-
-
-#endif  //  #if 0
 
 END_C_DECL2

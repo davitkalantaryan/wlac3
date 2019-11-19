@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.779
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wlac2_all", "wlac2_all.vcxproj", "{8064A1B3-0F15-4479-BC5F-975B5FA49A22}"
 EndProject
@@ -38,6 +38,11 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rfc2_signal_sender_test", "..\..\prj\tests\rfc2_signal_sender_test_vs\rfc2_signal_sender_test.vcxproj", "{DDF9E0F2-319A-4330-8910-5E3F96EE549C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A2CFC8AA-5E29-46B0-B922-96464E494AB5} = {A2CFC8AA-5E29-46B0-B922-96464E494AB5}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wlac_test01", "..\..\prj\tests\wlac_test01_vs\wlac_test01.vcxproj", "{678C54E6-3966-409D-B4CE-58974465E0DB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3A980FA3-A81B-45F0-BDBF-BF9C228AA2CB} = {3A980FA3-A81B-45F0-BDBF-BF9C228AA2CB}
 	EndProjectSection
 EndProject
 Global
@@ -125,7 +130,6 @@ Global
 		{21F3CF6B-90EE-4FF7-8C2C-63C730B1EA96}.Debug|ARM.ActiveCfg = Debug|ARM
 		{21F3CF6B-90EE-4FF7-8C2C-63C730B1EA96}.Debug|ARM.Build.0 = Debug|ARM
 		{21F3CF6B-90EE-4FF7-8C2C-63C730B1EA96}.Debug|x64.ActiveCfg = Debug|x64
-		{21F3CF6B-90EE-4FF7-8C2C-63C730B1EA96}.Debug|x64.Build.0 = Debug|x64
 		{21F3CF6B-90EE-4FF7-8C2C-63C730B1EA96}.Debug|x86.ActiveCfg = Debug|Win32
 		{21F3CF6B-90EE-4FF7-8C2C-63C730B1EA96}.Debug|x86.Build.0 = Debug|Win32
 		{21F3CF6B-90EE-4FF7-8C2C-63C730B1EA96}.Release|ARM.ActiveCfg = Release|ARM
@@ -182,6 +186,18 @@ Global
 		{DDF9E0F2-319A-4330-8910-5E3F96EE549C}.Release|x64.Build.0 = Release|x64
 		{DDF9E0F2-319A-4330-8910-5E3F96EE549C}.Release|x86.ActiveCfg = Release|Win32
 		{DDF9E0F2-319A-4330-8910-5E3F96EE549C}.Release|x86.Build.0 = Release|Win32
+		{678C54E6-3966-409D-B4CE-58974465E0DB}.Debug|ARM.ActiveCfg = Debug|ARM
+		{678C54E6-3966-409D-B4CE-58974465E0DB}.Debug|ARM.Build.0 = Debug|ARM
+		{678C54E6-3966-409D-B4CE-58974465E0DB}.Debug|x64.ActiveCfg = Debug|x64
+		{678C54E6-3966-409D-B4CE-58974465E0DB}.Debug|x64.Build.0 = Debug|x64
+		{678C54E6-3966-409D-B4CE-58974465E0DB}.Debug|x86.ActiveCfg = Debug|Win32
+		{678C54E6-3966-409D-B4CE-58974465E0DB}.Debug|x86.Build.0 = Debug|Win32
+		{678C54E6-3966-409D-B4CE-58974465E0DB}.Release|ARM.ActiveCfg = Release|ARM
+		{678C54E6-3966-409D-B4CE-58974465E0DB}.Release|ARM.Build.0 = Release|ARM
+		{678C54E6-3966-409D-B4CE-58974465E0DB}.Release|x64.ActiveCfg = Release|x64
+		{678C54E6-3966-409D-B4CE-58974465E0DB}.Release|x64.Build.0 = Release|x64
+		{678C54E6-3966-409D-B4CE-58974465E0DB}.Release|x86.ActiveCfg = Release|Win32
+		{678C54E6-3966-409D-B4CE-58974465E0DB}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -198,6 +214,7 @@ Global
 		{E128EA74-073A-4B2A-9B7F-11DA405A900D} = {AC316B05-1EEF-4836-8E59-F4F3A3EC4C0E}
 		{FF95871D-191D-47D0-9E46-73EE7B639AA3} = {AC316B05-1EEF-4836-8E59-F4F3A3EC4C0E}
 		{DDF9E0F2-319A-4330-8910-5E3F96EE549C} = {AC316B05-1EEF-4836-8E59-F4F3A3EC4C0E}
+		{678C54E6-3966-409D-B4CE-58974465E0DB} = {AC316B05-1EEF-4836-8E59-F4F3A3EC4C0E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA5D75C0-74DC-44C8-AD43-3C3BA4755FB3}

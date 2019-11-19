@@ -13,6 +13,14 @@
 
 BEGIN_C_DECL2
 
+enum LIST_ADD_RET {LIST_ADD_ADDED,LIST_ADD_ALREADY_EXIST,LIST_ADD_ERROR};
+
+//#define ITERATE_OVER_LIST(_firstListItem, _iterateListItem)	\
+//	for( int _iter=1, (_iterateListItem)=(_firstListItem); _iter||((_iterateListItem)!=(_firstListItem));_iter=0,(_iterateListItem) = (_iterateListItem)->next )
+
+#define ITERATE_OVER_LIST(_firstListItem, _iterateListItem)	\
+	for( (_iterateListItem)=(_firstListItem),(_firstListItem)=NEWNULLPTR2; ((_iterateListItem)!=(_firstListItem)); (_firstListItem)=(_firstListItem)?(_firstListItem):(_iterateListItem),(_iterateListItem)=(_iterateListItem)->next)
+
 #define WLAC_GLOBAL_HASH_SIZE		4096
 
 struct WlacListItem {
@@ -30,31 +38,32 @@ struct HashByPointer {
 	struct WlacListItem**		table;
 };
 
-extern HIDDEN_SYMBOL2 struct HashByPointer*				gh_pWlacGlobalHash;
-extern HIDDEN_SYMBOL2 HANDLE							gh_mutexForGlobalHash;
+//extern HIDDEN_SYMBOL2 struct HashByPointer*				gh_pWlacGlobalHash;
+//extern HIDDEN_SYMBOL2 HANDLE							gh_mutexForGlobalHash;
 
 // list API
-HIDDEN_SYMBOL2 void							WlacListItem_Construct(struct WlacListItem* ARGNONULL2 item);
-HIDDEN_SYMBOL2 void							WlacListItem_AddAfter(struct WlacListItem* ARGNONULL2 oldItem, struct WlacListItem* ARGNONULL2 newItem);
-HIDDEN_SYMBOL2 void							WlacListItem_AddBefore(struct WlacListItem* ARGNONULL2 oldItem, struct WlacListItem* ARGNONULL2 newItem);
-HIDDEN_SYMBOL2 void							WlacListItem_RemoveEntry(struct WlacListItem* ARGNONULL2 item);
+HIDDEN_SYMBOL3 void							WlacListItem_Construct(struct WlacListItem* ARGNONULL2 item);
+HIDDEN_SYMBOL3 void							WlacListItem_AddAfter(struct WlacListItem* ARGNONULL2 oldItem, struct WlacListItem* ARGNONULL2 newItem);
+HIDDEN_SYMBOL3 void							WlacListItem_AddBefore(struct WlacListItem* ARGNONULL2 oldItem, struct WlacListItem* ARGNONULL2 newItem);
+HIDDEN_SYMBOL3 void							WlacListItem_RemoveEntry(struct WlacListItem* ARGNONULL2 item);
 
 // hashtable API
-HIDDEN_SYMBOL2 struct HashByPointer*		HashByPointer_CreateAndConstruct(size_t size);
-HIDDEN_SYMBOL2 void							HashByPointer_DestructAndFree(struct HashByPointer* hash);
+HIDDEN_SYMBOL3 struct HashByPointer*		HashByPointer_CreateAndConstruct(size_t size);
+HIDDEN_SYMBOL3 void							HashByPointer_DestructAndFree(struct HashByPointer* hash);
 #ifdef _DEBUG
-HIDDEN_SYMBOL2 size_t						HashByPointer_GetIndexByKey(struct HashByPointer* hash, void* key);
-#endif	
-HIDDEN_SYMBOL2 int							HashByPointer_AddNew(struct HashByPointer* hash, void* key, void* data);
-HIDDEN_SYMBOL2 struct HashByPointerItem*	HashByPointer_GetItemByKey(struct HashByPointer* hash, void* key, size_t* ARGNONULL2 a_pIntex);
-HIDDEN_SYMBOL2 void*						HashByPointer_GetValueByKey(struct HashByPointer* hash, void* key);
-HIDDEN_SYMBOL2 void							HashByPointer_RemoveEntry(struct HashByPointer* hash, void* key);
+HIDDEN_SYMBOL3 size_t						HashByPointer_GetIndexByKey(struct HashByPointer* hash, void* key);
+#endif
+HIDDEN_SYMBOL3 enum LIST_ADD_RET			HashByPointer_AddNew2(struct HashByPointer* a_hash, void* a_key, void* a_data, void** a_ppOldData);
+HIDDEN_SYMBOL3 int							HashByPointer_AddNew(struct HashByPointer* hash, void* key, void* data);
+HIDDEN_SYMBOL3 struct HashByPointerItem*	HashByPointer_GetItemByKey(struct HashByPointer* hash, void* key, size_t* ARGNONULL2 a_pIntex);
+HIDDEN_SYMBOL3 void*						HashByPointer_GetValueByKey(struct HashByPointer* hash, void* key);
+HIDDEN_SYMBOL3 void							HashByPointer_RemoveEntry(struct HashByPointer* hash, void* key);
 
 
-HIDDEN_SYMBOL2 int							HashByPointer_AddNew_GlobalHash(void* key, void* data);
-HIDDEN_SYMBOL2 struct HashByPointerItem*	HashByPointer_GetItemByKey_GlobalHash(void* key, size_t* ARGNONULL2 a_pIntex);
-HIDDEN_SYMBOL2 void*						HashByPointer_GetValueByKey_GlobalHash(void* key);
-HIDDEN_SYMBOL2 void							HashByPointer_RemoveEntry_GlobalHash(void* key);
+HIDDEN_SYMBOL3 enum LIST_ADD_RET			HashByPointer_AddNew_GlobalHash(void* key, void* data, void** a_ppOldData);
+HIDDEN_SYMBOL3 struct HashByPointerItem*	HashByPointer_GetItemByKey_GlobalHash(void* key, size_t* ARGNONULL2 a_pIntex);
+HIDDEN_SYMBOL3 void*						HashByPointer_GetValueByKey_GlobalHash(void* key);
+HIDDEN_SYMBOL3 void							HashByPointer_RemoveEntry_GlobalHash(void* key);
 
 
 END_C_DECL2

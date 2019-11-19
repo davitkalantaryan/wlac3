@@ -13,12 +13,16 @@
 
 #define UNUSED2(x) (void)(x)
 
+#define HIDDEN_SYMBOL2	static
+
 BEGIN_C_DECL2
 
-HIDDEN_SYMBOL2 DWORD	gh_tlsPthreadDataKey	= TLS_OUT_OF_INDEXES;
+HIDDEN_SYMBOL3 int		gh_nErrorsAccured		= 0;
+HIDDEN_SYMBOL3 DWORD	gh_tlsPthreadDataKey = TLS_OUT_OF_INDEXES;
+HIDDEN_SYMBOL3 char		gh_path[MAX_PATH];
+
 HIDDEN_SYMBOL2 int		gh_nLibraryExitStarted	= 0;
 HIDDEN_SYMBOL2 int		gh_nFreeLibraryCalled	= 0;
-HIDDEN_SYMBOL2 char		gh_path[MAX_PATH];
 
 static int				s_nSocketLibraryInited = 0;
 
@@ -67,6 +71,11 @@ static int WlacInitializeStatic(void* a_pReservedArg,HINSTANCE a_hinstDLL)
 	WORD wVersionRequested;
 	WSADATA wsaData;
 
+	if(gh_nErrorsAccured){
+		WlacCleanStatic(a_pReservedArg);
+		return -gh_nErrorsAccured;
+	}
+
 	gh_nLibraryExitStarted = 0;
 	gh_nFreeLibraryCalled = 0;
 
@@ -88,24 +97,6 @@ static int WlacInitializeStatic(void* a_pReservedArg,HINSTANCE a_hinstDLL)
 		return -2;
 	}
 
-	gh_mutexForGlobalHash = CreateMutex(NEWNULLPTR2, FALSE, NEWNULLPTR2);
-	if(!gh_mutexForGlobalHash){
-		WlacCleanStatic(a_pReservedArg);
-		return -1;
-	}
-
-	//gh_mutexForGlobalSigactions= CreateMutex(NEWNULLPTR2, FALSE, NEWNULLPTR2);
-	//if (!gh_mutexForGlobalSigactions) {
-	//	WlacCleanStatic(a_pReservedArg);
-	//	return -2;
-	//}
-
-	gh_pWlacGlobalHash = HashByPointer_CreateAndConstruct(WLAC_GLOBAL_HASH_SIZE);
-	if(!gh_pWlacGlobalHash){
-		WlacCleanStatic(a_pReservedArg);
-		return -3;
-	}
-
 	if( TLS_OUT_OF_INDEXES == (gh_tlsPthreadDataKey = TlsAlloc() )  ){
 		WlacCleanStatic(a_pReservedArg);
 		return -4;
@@ -121,15 +112,6 @@ static void WlacCleanStatic(void* a_pReservedArg)
 
 	WLAC2_DllMain_For_Clean_Called(a_pReservedArg);
 	gh_path[0] = 0;
-	if(gh_pWlacGlobalHash){
-		HashByPointer_DestructAndFree(gh_pWlacGlobalHash);
-		gh_pWlacGlobalHash = NEWNULLPTR2;
-	}
-
-	if (gh_mutexForGlobalHash) {
-		CloseHandle(gh_mutexForGlobalHash);
-		gh_mutexForGlobalHash = NEWNULLPTR2;
-	}
 
 	//if (gh_mutexForGlobalSigactions) {
 	//	CloseHandle(gh_mutexForGlobalSigactions);

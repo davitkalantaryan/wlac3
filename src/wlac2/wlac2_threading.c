@@ -12,33 +12,16 @@
 #include <unistd.h>
 #include <malloc.h>
 
+#define HIDDEN_SYMBOL2 static
+
 BEGIN_C_DECL2
 
-HIDDEN_SYMBOL2 struct PthreadPrivate* GetOrCreateCurrentThreadData(void)
+HIDDEN_SYMBOL2 struct WlacListItem*			gh_allThreads = NEWNULLPTR2;
+
+
+HIDDEN_SYMBOL2 void FreeThreadData(struct PthreadPrivate* a_threadData)
 {
-	struct PthreadPrivate* pThrData = STATIC_CAST2(struct PthreadPrivate*,TlsGetValue(gh_tlsPthreadDataKey));
-
-	if(!pThrData){
-		pthread_t currentThread = GetCurrentThread();
-		pThrData = GetorCreateDataForThread(currentThread);
-		if(!pThrData){return pThrData;}
-		TlsSetValue(gh_tlsPthreadDataKey, pThrData);
-	}
-
-	return pThrData;
-}
-
-
-HIDDEN_SYMBOL2 struct PthreadPrivate*  GetorCreateDataForThread(pthread_t a_thread)
-{
-	struct PthreadPrivate* pThrData = STATIC_CAST2(pthread_t, HashByPointer_GetValueByKey_GlobalHash(a_thread));
-	if (!pThrData) {
-		pThrData = CreateThreadData(NEWNULLPTR2, a_thread);
-		if (!pThrData) { return pThrData; }
-		HashByPointer_AddNew_GlobalHash(a_thread, pThrData);
-	}  // if(!pThrData){
-
-	return pThrData;
+	free(a_threadData);
 }
 
 
@@ -51,7 +34,7 @@ HIDDEN_SYMBOL2 struct PthreadPrivate* CreateThreadData(struct PthreadPrivate* a_
 
 	pThreadData->parentThreadPtr = a_pParent;
 	pThreadData->threadHandle = a_threadHandle;
-	pThreadData->signalData.isSigactionCalled = 0;
+	memset(pThreadData->signalData.isSigactionCalled2,0,sizeof(pThreadData->signalData.isSigactionCalled2));
 
 	if(a_pParent){
 		pParentAction = a_pParent->signalData.sigActions;
@@ -65,14 +48,50 @@ HIDDEN_SYMBOL2 struct PthreadPrivate* CreateThreadData(struct PthreadPrivate* a_
 }
 
 
+HIDDEN_SYMBOL2 struct PthreadPrivate*  GetOrCreateDataForThread(pthread_t a_thread)
+{
+	struct PthreadPrivate* pThrData = STATIC_CAST2(pthread_t, HashByPointer_GetValueByKey_GlobalHash(a_thread));
+	if (!pThrData) {
+		void* pOldData;
+		pThrData = CreateThreadData(NEWNULLPTR2, a_thread);
+		if (!pThrData) { return pThrData; }
+		if(LIST_ADD_ALREADY_EXIST==HashByPointer_AddNew_GlobalHash(a_thread, pThrData,&pOldData)){
+			FreeThreadData(pThrData);
+			pThrData = STATIC_CAST2(pthread_t,pOldData);
+		}
+	}  // if(!pThrData){
+
+	return pThrData;
+}
+
+HIDDEN_SYMBOL3 struct PthreadPrivate* GetOrCreateCurrentThreadData(void)
+{
+	struct PthreadPrivate* pThrData = STATIC_CAST2(struct PthreadPrivate*,TlsGetValue(gh_tlsPthreadDataKey));
+
+	if(!pThrData){
+		pthread_t currentThread = GetCurrentThread();
+		pThrData = GetOrCreateDataForThread(currentThread);
+		if(!pThrData){return pThrData;}
+		TlsSetValue(gh_tlsPthreadDataKey, pThrData);
+	}
+
+	return pThrData;
+}
+
+
 HIDDEN_SYMBOL2 void SetParentThreadPointer(struct PthreadPrivate* a_pParent, struct PthreadPrivate* a_childThreadData)
 {
-	if(!a_childThreadData->signalData.isSigactionCalled){
-		if(a_pParent && a_pParent->signalData.isSigactionCalled){
-			memcpy(a_childThreadData->signalData.sigActions, a_pParent->signalData.sigActions, sizeof(a_childThreadData->signalData.sigActions));
-			a_childThreadData->signalData.isSigactionCalled = 1;
+	a_childThreadData->parentThreadPtr = a_pParent;
+	if(a_pParent){
+		for(uint64_t i=0;i<_NSIG;++i){
+			if (!GET_SIGACTION_BIT(a_childThreadData->signalData.isSigactionCalled2,i) && 
+				GET_SIGACTION_BIT(a_pParent->signalData.isSigactionCalled2,i)) {
+				a_childThreadData->signalData.sigActions[i]= a_pParent->signalData.sigActions[i];
+				SET_SIGACTION_BIT(a_childThreadData->signalData.isSigactionCalled2,i);
+			}
 		}
 	}
+
 }
 
 

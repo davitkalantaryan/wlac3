@@ -41,6 +41,9 @@
 #ifndef SIGIO
 #define	SIGIO		29	/* I/O now possible (4.2 BSD).  */
 #endif
+#ifndef SIGKILL
+#define	SIGKILL		9	/* I/O now possible (4.2 BSD).  */
+#endif
 #ifndef SIGALRM
 #define	SIGALRM		14	/* I/O now possible (4.2 BSD).  */
 #endif
