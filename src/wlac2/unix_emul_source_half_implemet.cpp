@@ -29,7 +29,7 @@ WLAC_EXPORT key_t ftok(const char *pathname, int proj_id)
 {
 	key_t tReturn = 0;
 	if (!pathname) return 0;
-	while (pathname)
+	while (*pathname)
 	{
 		tReturn += ((key_t)((size_t)(pathname++)));
 	}

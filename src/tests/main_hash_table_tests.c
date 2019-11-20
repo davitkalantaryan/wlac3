@@ -12,6 +12,10 @@
 #define HASH_SIZE_TO_CHECK				8192
 #define NUMBER_HANDLES_TO_CHECK			4096
 
+BEGIN_C_DECL2
+int gh_nErrorsAccured;
+END_C_DECL2
+
 static DWORD WINAPI ThreadFunctionStat(void* lpThreadParameter);
 
 int main()

@@ -9,7 +9,9 @@
 #include <malloc.h> // for clang this is not necessary
 #include <wlac_internal_private.h>
 
-#define HIDDEN_SYMBOL2  static
+#ifndef INTERNAL_SYMBOL_VISIBILITY
+#define INTERNAL_SYMBOL_VISIBILITY  static
+#endif
 
 //#ifdef _WIN64
 //#define BITS_TO_SHIFT	3
@@ -28,17 +30,17 @@
 BEGIN_C_DECL2
 
 
-HIDDEN_SYMBOL2 struct HashByPointer*				gh_pWlacGlobalHash = NEWNULLPTR2;
-HIDDEN_SYMBOL2 HANDLE								gh_mutexForGlobalHash = NEWNULLPTR2;
+INTERNAL_SYMBOL_VISIBILITY struct HashByPointer*				gh_pWlacGlobalHash = NEWNULLPTR2;
+INTERNAL_SYMBOL_VISIBILITY HANDLE								gh_mutexForGlobalHash = NEWNULLPTR2;
 
 
-HIDDEN_SYMBOL2 void WlacListItem_Construct(struct WlacListItem* ARGNONULL2 a_item)
+INTERNAL_SYMBOL_VISIBILITY void WlacListItem_Construct(struct WlacListItem* ARGNONULL2 a_item)
 {
 	a_item->next = a_item->prev = a_item;
 }
 
 
-HIDDEN_SYMBOL2 void WlacListItem_AddAfter(struct WlacListItem* ARGNONULL2 a_oldItem, struct WlacListItem* ARGNONULL2 a_newItem)
+INTERNAL_SYMBOL_VISIBILITY void WlacListItem_AddAfter(struct WlacListItem* ARGNONULL2 a_oldItem, struct WlacListItem* ARGNONULL2 a_newItem)
 {
 	a_newItem->next = a_oldItem->next;
 	a_oldItem->next->prev = a_newItem;
@@ -48,7 +50,7 @@ HIDDEN_SYMBOL2 void WlacListItem_AddAfter(struct WlacListItem* ARGNONULL2 a_oldI
 }
 
 
-HIDDEN_SYMBOL2 void WlacListItem_AddBefore(struct WlacListItem* ARGNONULL2 a_oldItem, struct WlacListItem* ARGNONULL2 a_newItem)
+INTERNAL_SYMBOL_VISIBILITY void WlacListItem_AddBefore(struct WlacListItem* ARGNONULL2 a_oldItem, struct WlacListItem* ARGNONULL2 a_newItem)
 {
 	a_newItem->prev = a_oldItem->prev;
 	a_oldItem->prev->next = a_newItem;
@@ -58,7 +60,7 @@ HIDDEN_SYMBOL2 void WlacListItem_AddBefore(struct WlacListItem* ARGNONULL2 a_old
 }
 
 
-HIDDEN_SYMBOL2 void WlacListItem_RemoveEntry(struct WlacListItem* ARGNONULL2 a_item)
+INTERNAL_SYMBOL_VISIBILITY void WlacListItem_RemoveEntry(struct WlacListItem* ARGNONULL2 a_item)
 {
 	a_item->next->prev = a_item->prev;
 	a_item->prev->next = a_item->next;
@@ -67,7 +69,7 @@ HIDDEN_SYMBOL2 void WlacListItem_RemoveEntry(struct WlacListItem* ARGNONULL2 a_i
 
 //////////////////////////////////////////////////
 #ifdef _DEBUG
-HIDDEN_SYMBOL2 size_t HashByPointer_GetIndexByKey(struct HashByPointer* a_hash, void* a_key)
+INTERNAL_SYMBOL_VISIBILITY size_t HashByPointer_GetIndexByKey(struct HashByPointer* a_hash, void* a_key)
 #else
 static _inline size_t HashByPointer_GetIndexByKey(struct HashByPointer* a_hash, void* a_key)
 #endif
@@ -80,7 +82,7 @@ static _inline size_t HashByPointer_GetIndexByKey(struct HashByPointer* a_hash, 
 }
 
 
-HIDDEN_SYMBOL2 struct HashByPointer* HashByPointer_CreateAndConstruct(size_t a_size)
+INTERNAL_SYMBOL_VISIBILITY struct HashByPointer* HashByPointer_CreateAndConstruct(size_t a_size)
 {
 	struct HashByPointer* pReturn = STATIC_CAST2(struct HashByPointer*,malloc(sizeof(struct HashByPointer)));
 	HANDLE_MEM_DEF(pReturn,"Unable to get memory for pointerHash");
@@ -94,7 +96,7 @@ HIDDEN_SYMBOL2 struct HashByPointer* HashByPointer_CreateAndConstruct(size_t a_s
 }
 
 
-HIDDEN_SYMBOL2 void	HashByPointer_DestructAndFree(struct HashByPointer* a_hash)
+INTERNAL_SYMBOL_VISIBILITY void	HashByPointer_DestructAndFree(struct HashByPointer* a_hash)
 {
 	size_t i;
 	struct WlacListItem* pItemNext;
@@ -198,7 +200,7 @@ struct HashByPointerItem* HashByPointer_GetItemByKey(struct HashByPointer* a_has
 }
 
 
-HIDDEN_SYMBOL2 void* HashByPointer_GetValueByKey(struct HashByPointer* a_hash, void* a_key)
+INTERNAL_SYMBOL_VISIBILITY void* HashByPointer_GetValueByKey(struct HashByPointer* a_hash, void* a_key)
 {
 	size_t unIndex;
 	struct HashByPointerItem* pHashItem = HashByPointer_GetItemByKey(a_hash,a_key,&unIndex);
@@ -210,7 +212,7 @@ HIDDEN_SYMBOL2 void* HashByPointer_GetValueByKey(struct HashByPointer* a_hash, v
 }
 
 
-HIDDEN_SYMBOL2 void HashByPointer_RemoveEntry(struct HashByPointer* a_hash, void* a_key)
+INTERNAL_SYMBOL_VISIBILITY void HashByPointer_RemoveEntry(struct HashByPointer* a_hash, void* a_key)
 {
 	size_t unIndex;
 	struct HashByPointerItem* pHashItem = HashByPointer_GetItemByKey(a_hash, a_key,&unIndex);
@@ -234,7 +236,7 @@ HIDDEN_SYMBOL3 enum LIST_ADD_RET HashByPointer_AddNew_GlobalHash(void* a_key, vo
 }
 
 
-HIDDEN_SYMBOL2 struct HashByPointerItem* HashByPointer_GetItemByKey_GlobalHash(void* a_key, size_t* ARGNONULL2 a_pIntex)
+INTERNAL_SYMBOL_VISIBILITY struct HashByPointerItem* HashByPointer_GetItemByKey_GlobalHash(void* a_key, size_t* ARGNONULL2 a_pIntex)
 {
 	struct HashByPointerItem* pReturn;
 	while (WAIT_IO_COMPLETION == WaitForSingleObjectEx(gh_mutexForGlobalHash, INFINITE, TRUE))
@@ -256,7 +258,7 @@ HIDDEN_SYMBOL3 void* HashByPointer_GetValueByKey_GlobalHash(void* a_key)
 }
 
 
-HIDDEN_SYMBOL2 void HashByPointer_RemoveEntry_GlobalHash(void* a_key)
+INTERNAL_SYMBOL_VISIBILITY void HashByPointer_RemoveEntry_GlobalHash(void* a_key)
 {
 	while (WAIT_IO_COMPLETION == WaitForSingleObjectEx(gh_mutexForGlobalHash, INFINITE, TRUE))
 		;
@@ -267,6 +269,15 @@ HIDDEN_SYMBOL2 void HashByPointer_RemoveEntry_GlobalHash(void* a_key)
 
 
 /*////////////////////////////////////////////////////////////////////////////////////////*/
+
+extern HANDLE s_testThread;
+HANDLE s_testThread=NEWNULLPTR2;
+static DWORD WINAPI PTHREAD_START_ROUTINE_Static(LPVOID lpThreadParameter) 
+{
+	ExitThread(0);
+	return 0;
+}
+
 static void list_and_hash_clean(void)
 {
 	if (gh_pWlacGlobalHash) {
@@ -277,6 +288,12 @@ static void list_and_hash_clean(void)
 	if (gh_mutexForGlobalHash) {
 		CloseHandle(gh_mutexForGlobalHash);
 		gh_mutexForGlobalHash = NEWNULLPTR2;
+	}
+
+	if(s_testThread){
+		WaitForSingleObject(s_testThread, INFINITE);
+		CloseHandle(s_testThread);
+		s_testThread = NEWNULLPTR2;
 	}
 }
 
@@ -295,6 +312,8 @@ INITIALIZER(list_and_hash_init) {
 		list_and_hash_clean();
 		return;
 	}
+
+	s_testThread = CreateThread(NEWNULLPTR2,0,&PTHREAD_START_ROUTINE_Static,NEWNULLPTR2,0,NEWNULLPTR2);
 
 	atexit(list_and_hash_clean);
 }

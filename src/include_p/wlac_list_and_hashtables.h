@@ -41,29 +41,32 @@ struct HashByPointer {
 //extern HIDDEN_SYMBOL2 struct HashByPointer*				gh_pWlacGlobalHash;
 //extern HIDDEN_SYMBOL2 HANDLE							gh_mutexForGlobalHash;
 
+HIDDEN_SYMBOL3 void*				HashByPointer_GetValueByKey_GlobalHash(void* key);
+HIDDEN_SYMBOL3 enum LIST_ADD_RET	HashByPointer_AddNew_GlobalHash(void* key, void* data, void** a_ppOldData);
+
+#ifdef INTERNAL_SYMBOL_VISIBILITY
 // list API
-HIDDEN_SYMBOL3 void							WlacListItem_Construct(struct WlacListItem* ARGNONULL2 item);
-HIDDEN_SYMBOL3 void							WlacListItem_AddAfter(struct WlacListItem* ARGNONULL2 oldItem, struct WlacListItem* ARGNONULL2 newItem);
-HIDDEN_SYMBOL3 void							WlacListItem_AddBefore(struct WlacListItem* ARGNONULL2 oldItem, struct WlacListItem* ARGNONULL2 newItem);
-HIDDEN_SYMBOL3 void							WlacListItem_RemoveEntry(struct WlacListItem* ARGNONULL2 item);
+INTERNAL_SYMBOL_VISIBILITY void							WlacListItem_Construct(struct WlacListItem* ARGNONULL2 item);
+INTERNAL_SYMBOL_VISIBILITY void							WlacListItem_AddAfter(struct WlacListItem* ARGNONULL2 oldItem, struct WlacListItem* ARGNONULL2 newItem);
+INTERNAL_SYMBOL_VISIBILITY void							WlacListItem_AddBefore(struct WlacListItem* ARGNONULL2 oldItem, struct WlacListItem* ARGNONULL2 newItem);
+INTERNAL_SYMBOL_VISIBILITY void							WlacListItem_RemoveEntry(struct WlacListItem* ARGNONULL2 item);
 
 // hashtable API
-HIDDEN_SYMBOL3 struct HashByPointer*		HashByPointer_CreateAndConstruct(size_t size);
-HIDDEN_SYMBOL3 void							HashByPointer_DestructAndFree(struct HashByPointer* hash);
+INTERNAL_SYMBOL_VISIBILITY struct HashByPointer*		HashByPointer_CreateAndConstruct(size_t size);
+INTERNAL_SYMBOL_VISIBILITY void							HashByPointer_DestructAndFree(struct HashByPointer* hash);
 #ifdef _DEBUG
-HIDDEN_SYMBOL3 size_t						HashByPointer_GetIndexByKey(struct HashByPointer* hash, void* key);
+INTERNAL_SYMBOL_VISIBILITY size_t						HashByPointer_GetIndexByKey(struct HashByPointer* hash, void* key);
 #endif
-HIDDEN_SYMBOL3 enum LIST_ADD_RET			HashByPointer_AddNew2(struct HashByPointer* a_hash, void* a_key, void* a_data, void** a_ppOldData);
-HIDDEN_SYMBOL3 int							HashByPointer_AddNew(struct HashByPointer* hash, void* key, void* data);
-HIDDEN_SYMBOL3 struct HashByPointerItem*	HashByPointer_GetItemByKey(struct HashByPointer* hash, void* key, size_t* ARGNONULL2 a_pIntex);
-HIDDEN_SYMBOL3 void*						HashByPointer_GetValueByKey(struct HashByPointer* hash, void* key);
-HIDDEN_SYMBOL3 void							HashByPointer_RemoveEntry(struct HashByPointer* hash, void* key);
+INTERNAL_SYMBOL_VISIBILITY enum LIST_ADD_RET			HashByPointer_AddNew2(struct HashByPointer* a_hash, void* a_key, void* a_data, void** a_ppOldData);
+INTERNAL_SYMBOL_VISIBILITY int							HashByPointer_AddNew(struct HashByPointer* hash, void* key, void* data);
+INTERNAL_SYMBOL_VISIBILITY struct HashByPointerItem*	HashByPointer_GetItemByKey(struct HashByPointer* hash, void* key, size_t* ARGNONULL2 a_pIntex);
+INTERNAL_SYMBOL_VISIBILITY void*						HashByPointer_GetValueByKey(struct HashByPointer* hash, void* key);
+INTERNAL_SYMBOL_VISIBILITY void							HashByPointer_RemoveEntry(struct HashByPointer* hash, void* key);
 
+INTERNAL_SYMBOL_VISIBILITY struct HashByPointerItem*	HashByPointer_GetItemByKey_GlobalHash(void* key, size_t* ARGNONULL2 a_pIntex);
+INTERNAL_SYMBOL_VISIBILITY void							HashByPointer_RemoveEntry_GlobalHash(void* key);
 
-HIDDEN_SYMBOL3 enum LIST_ADD_RET			HashByPointer_AddNew_GlobalHash(void* key, void* data, void** a_ppOldData);
-HIDDEN_SYMBOL3 struct HashByPointerItem*	HashByPointer_GetItemByKey_GlobalHash(void* key, size_t* ARGNONULL2 a_pIntex);
-HIDDEN_SYMBOL3 void*						HashByPointer_GetValueByKey_GlobalHash(void* key);
-HIDDEN_SYMBOL3 void							HashByPointer_RemoveEntry_GlobalHash(void* key);
+#endif  // #ifdef INTERNAL_SYMBOL_VISIBILITY
 
 
 END_C_DECL2
