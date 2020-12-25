@@ -27,12 +27,12 @@
     <ClCompile Include="..\..\..\src\tests\main_hash_table_tests.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\wlac2\wlac_list_and_hashtables.c">
+    <ClCompile Include="..\..\..\src\wlac3\wlac_list_and_hashtables.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\wlac2_common_internal.h">
+    <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\wlac3_common_internal.h">
       <Filter>Header Files\include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\include_p\wlac_list_and_hashtables.h">

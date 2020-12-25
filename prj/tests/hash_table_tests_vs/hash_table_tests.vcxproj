@@ -97,28 +97,28 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.tests\bin\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.tests\bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.tests\bin\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.tests\bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.tests\bin\</OutDir>
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.tests\bin\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.tests\bin\</OutDir>
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.tests\bin\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.tests\bin\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.tests\bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.tests\bin\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.tests\bin\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -212,10 +212,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\src\tests\main_hash_table_tests.c" />
-    <ClCompile Include="..\..\..\src\wlac2\wlac_list_and_hashtables.c" />
+    <ClCompile Include="..\..\..\src\wlac3\wlac_list_and_hashtables.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\wlac2_common_internal.h" />
+    <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\wlac3_common_internal.h" />
     <ClInclude Include="..\..\..\src\include_p\wlac_list_and_hashtables.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

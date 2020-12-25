@@ -97,28 +97,28 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.tests\dll\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(Platformtarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.tests\dll\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.tests\dll\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(Platformtarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.tests\dll\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.tests\dll\</OutDir>
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.tests\dll\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(Platformtarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.tests\dll\</OutDir>
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.tests\dll\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(Platformtarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.tests\dll\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(Platformtarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.tests\dll\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\.tests\dll\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(Platformtarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.tests\dll\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

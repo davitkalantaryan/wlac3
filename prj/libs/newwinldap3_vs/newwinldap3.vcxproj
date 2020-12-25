@@ -29,7 +29,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{70D8ED40-C65A-44D1-B718-E9331ADFC989}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>newwinldap</RootNamespace>
+    <RootNamespace>newwinldap3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -103,28 +103,28 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\</OutDir>
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\lib\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTaget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\</OutDir>
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\lib\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTaget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTaget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\lib\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTaget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\lib\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTaget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\lib\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTaget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\lib\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -142,13 +142,11 @@
       <AdditionalDependencies>Wldap32_initial.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir)..\.objects\lib</AdditionalLibraryDirectories>
     </Lib>
     <PreBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
-
-lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\Wldap32_initial.lib  /MACHINE:$(TargetCompilerName)
-</Command>
+      <Command>if not exist $(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib mkdir $(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib
+lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib\Wldap32_initial.lib  /MACHINE:$(PlatformTarget)</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
@@ -172,15 +170,11 @@ lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..
       <AdditionalDependencies>Wldap32_initial.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir)..\.objects\lib</AdditionalLibraryDirectories>
     </Lib>
     <PreBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
-
-lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\Wldap32_initial.lib  /MACHINE:$(TargetCompilerName)
-::
-lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\Wldap32_initial.lib  /MACHINE:$(Platform)
-</Command>
+      <Command>if not exist $(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib mkdir $(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib
+lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib\Wldap32_initial.lib  /MACHINE:$(PlatformTarget)</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
@@ -204,15 +198,11 @@ lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..
       <AdditionalDependencies>Wldap32_initial.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir)..\.objects\lib</AdditionalLibraryDirectories>
     </Lib>
     <PreBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
-
-lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\Wldap32_initial.lib  /MACHINE:$(TargetCompilerName)
-::
-lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\Wldap32_initial.lib  /MACHINE:$(Platform)
-</Command>
+      <Command>if not exist $(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib mkdir $(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib
+lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib\Wldap32_initial.lib  /MACHINE:$(PlatformTarget)</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
@@ -240,13 +230,11 @@ lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..
       <AdditionalDependencies>Wldap32_initial.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir)..\.objects\lib</AdditionalLibraryDirectories>
     </Lib>
     <PreBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
-
-lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\Wldap32_initial.lib  /MACHINE:$(TargetCompilerName)
-</Command>
+      <Command>if not exist $(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib mkdir $(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib
+lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib\Wldap32_initial.lib  /MACHINE:$(PlatformTarget)</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
@@ -274,15 +262,11 @@ lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..
       <AdditionalDependencies>Wldap32_initial.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir)..\.objects\lib</AdditionalLibraryDirectories>
     </Lib>
     <PreBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
-
-lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\Wldap32_initial.lib  /MACHINE:$(TargetCompilerName)
-::
-lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\Wldap32_initial.lib  /MACHINE:$(Platform)
-</Command>
+      <Command>if not exist $(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib mkdir $(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib
+lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib\Wldap32_initial.lib  /MACHINE:$(PlatformTarget)</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
@@ -310,15 +294,11 @@ lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..
       <AdditionalDependencies>Wldap32_initial.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-      <AdditionalLibraryDirectories>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir)..\.objects\lib</AdditionalLibraryDirectories>
     </Lib>
     <PreBuildEvent>
-      <Command>if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib
-
-lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\Wldap32_initial.lib  /MACHINE:$(TargetCompilerName)
-::
-lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib\Wldap32_initial.lib  /MACHINE:$(Platform)
-</Command>
+      <Command>if not exist $(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib mkdir $(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib
+lib /def:$(ProjectDir)..\..\..\src\winldap\Wldap32.def   /OUT:$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\.objects\lib\Wldap32_initial.lib  /MACHINE:$(PlatformTarget)</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>::if not exist $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib mkdir $(ProjectDir)..\..\..\sys\win_msc_$(Platform)\lib

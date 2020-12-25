@@ -93,7 +93,7 @@
     <ClInclude Include="..\..\..\include\rpc\types.h">
       <Filter>Header Files\include\rpc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\rpc\wlac2_sunrpc_internal.h">
+    <ClInclude Include="..\..\..\include\rpc\wlac3_sunrpc_internal.h">
       <Filter>Header Files\include\rpc</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\rpc\xdr.h">
@@ -234,7 +234,7 @@
     <ClInclude Include="..\..\..\include\poll.h">
       <Filter>Header Files\include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\wlac2_common_internal.h">
+    <ClInclude Include="..\..\..\include\.wlac_specific\first_includes\wlac3_common_internal.h">
       <Filter>Header Files\include\.wlac_specific\first_includes</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\include_p\wlac_list_and_hashtables.h">
@@ -251,34 +251,34 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\wlac2\wlac2_library_entry_point.c">
+    <ClCompile Include="..\..\..\src\wlac3\wlac3_library_entry_point.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\wlac2\wlac_list_and_hashtables.c">
+    <ClCompile Include="..\..\..\src\wlac3\wlac_list_and_hashtables.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\wlac2\wlac2_unix_like_signaling.c">
+    <ClCompile Include="..\..\..\src\wlac3\wlac3_unix_like_signaling.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\wlac2\wlac2_threading.c">
+    <ClCompile Include="..\..\..\src\wlac3\wlac3_threading.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\wlac2\wlac_timing_functions.c">
+    <ClCompile Include="..\..\..\src\wlac3\wlac_timing_functions.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\wlac2\wlac_different_functions.c">
+    <ClCompile Include="..\..\..\src\wlac3\wlac_different_functions.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\wlac2\unix_emul_source_half_implemet.cpp">
+    <ClCompile Include="..\..\..\src\wlac3\unix_emul_source_half_implemet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\wlac2\gem_ipc_source.cpp">
+    <ClCompile Include="..\..\..\src\wlac3\gem_ipc_source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\wlac2\unix_sync_objects.cpp">
+    <ClCompile Include="..\..\..\src\wlac3\unix_sync_objects.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\wlac2\gem_networking.cpp">
+    <ClCompile Include="..\..\..\src\wlac3\gem_networking.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

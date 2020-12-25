@@ -1,5 +1,5 @@
 
-#pragma comment (lib, "wlac2.lib")
+#pragma comment (lib, "wlac3.lib")
 
 #include <unistd.h>
 #include <pthread.h>

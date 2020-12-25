@@ -29,7 +29,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{A2CFC8AA-5E29-46B0-B922-96464E494AB5}</ProjectGuid>
-    <RootNamespace>rfc2</RootNamespace>
+    <RootNamespace>rfc3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -103,34 +103,34 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName).$(WlacLibraryVersion)</TargetName>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\dll\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName).$(WlacLibraryVersion)</TargetName>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\dll\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\</OutDir>
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\dll\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName).$(WlacLibraryVersion)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\</OutDir>
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\dll\</OutDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName).$(WlacLibraryVersion)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName).$(WlacLibraryVersion)</TargetName>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\dll\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
+    <IntDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\$(Configuration)\.objects\$(ProjectName)\</IntDir>
     <TargetName>$(ProjectName).$(WlacLibraryVersion)</TargetName>
-    <OutDir>$(ProjectDir)..\..\..\sys\win_msc_$(Platform)\dll\</OutDir>
+    <OutDir>$(ProjectDir)..\..\..\sys\win_$(PlatformTarget)\dll\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -259,14 +259,14 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\rfc2\dllmain_rfc2.cpp" />
+    <ClCompile Include="..\..\..\src\rfc3\dllmain_rfc3.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\include\.wlac_specific\rfc2\readme.txt" />
+    <Text Include="..\..\..\include\.wlac_specific\rfc3\readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\include\.wlac_specific\rfc2\wlac2_rfc2.h" />
-    <ClInclude Include="..\..\..\src\include_p\wlac2_rfc2_private.h" />
+    <ClInclude Include="..\..\..\include\.wlac_specific\rfc3\wlac2_rfc3.h" />
+    <ClInclude Include="..\..\..\src\include_p\wlac2_rfc3_private.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

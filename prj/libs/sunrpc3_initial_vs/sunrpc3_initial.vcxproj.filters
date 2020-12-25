@@ -27,130 +27,130 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\src\sunrpc\AUTH_NON.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\AUTH_NON.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\AUTH_UNI.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\AUTH_UNI.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\AUTHUNIX.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\AUTHUNIX.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\BCOPY.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\BCOPY.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\BINDRESV.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\BINDRESV.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\CLNT_GEN.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\CLNT_GEN.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\CLNT_PER.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\CLNT_PER.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\CLNT_RAW.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\CLNT_RAW.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\CLNT_SIM.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\CLNT_SIM.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\CLNT_TCP.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\CLNT_TCP.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\CLNT_UDP.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\CLNT_UDP.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\GET_MYAD.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\GET_MYAD.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\GETRPCEN.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\GETRPCEN.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\GETRPCPO.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\GETRPCPO.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\NT.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\NT.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\PMAP_CLN.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\PMAP_CLN.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\PMAP_GET.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\PMAP_GET.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\PMAP_GMA.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\PMAP_GMA.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\PMAP_PR.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\PMAP_PR.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\PMAP_PRO.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\PMAP_PRO.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\PMAP_RMT.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\PMAP_RMT.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\PORTMAP.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\PORTMAP.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\RPC_CALL.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\RPC_CALL.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\RPC_COMM.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\RPC_COMM.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\RPC_PROT.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\RPC_PROT.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\StdAfx.cpp">
+    <ClCompile Include="..\..\..\src\sunrpc3\StdAfx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\SUNRPC.CPP">
+    <ClCompile Include="..\..\..\src\sunrpc3\sunrpc3.CPP">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\SVC.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\SVC.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_AUTH.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\SVC_AUTH.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_AUTU.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\SVC_AUTU.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_RAW.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\SVC_RAW.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_RUN.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\SVC_RUN.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_SIMP.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\SVC_SIMP.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_TCP.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\SVC_TCP.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\SVC_UDP.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\SVC_UDP.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\XDR.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\XDR.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\XDR_ARRA.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\XDR_ARRA.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\XDR_FLOA.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\XDR_FLOA.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\XDR_MEM.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\XDR_MEM.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\XDR_REC.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\XDR_REC.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\XDR_REFE.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\XDR_REFE.C">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\src\sunrpc\XDR_STDI.C">
+    <ClCompile Include="..\..\..\src\sunrpc3\XDR_STDI.C">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -194,13 +194,13 @@
     <ClInclude Include="..\..\..\include\rpc\wlac2_sunrpc_internal.h">
       <Filter>Header Files\include\rpc</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\sunrpc\private_include\sunrpc_private_used_during_lib_creation.h">
+    <ClInclude Include="..\..\..\src\sunrpc3\private_include\sunrpc_private_used_during_lib_creation.h">
       <Filter>Source Files\private_include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\sunrpc\private_include\sunrpc.h">
+    <ClInclude Include="..\..\..\src\sunrpc3\private_include\sunrpc3.h">
       <Filter>Source Files\private_include</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\src\sunrpc\private_include\sunrpc_private_used_during_lib_creation_with_symbols.h">
+    <ClInclude Include="..\..\..\src\sunrpc3\private_include\sunrpc_private_used_during_lib_creation_with_symbols.h">
       <Filter>Source Files\private_include</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\include\rpc\pmap_clnt.h">
@@ -211,12 +211,12 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\..\..\src\sunrpc\ReadMe.txt">
+    <Text Include="..\..\..\src\sunrpc3\ReadMe.txt">
       <Filter>doc</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\src\sunrpc\mini_xdr_rpc.def">
+    <None Include="..\..\..\src\sunrpc3\mini_xdr_rpc.def">
       <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
